@@ -221,7 +221,7 @@ module.exports = [
         Description : "Proin et tellus a mi lobortis suscipit",
         NodesToSendValue : [
             {
-                NodeId : "ST300.MES.St300ProgramJob3",
+                NodeId : "ST300.MES.St300ProgramJob1",
                 NodeDesiredValue : "1",
                 NodeDataType : DataType.Int32
             },
@@ -232,15 +232,144 @@ module.exports = [
         Description : "Proin et tellus a mi lobortis suscipit",
         NodesToCheckValue : [
             {
-                NodeId : "ST300.MES.St300ProgramJob3",
+                NodeId : "ST300.MES.St300ProgramJob1",
                 NodeDesiredValue : "2",
                 NodeDataType : DataType.Int32
-            },            
+            }
+        ]
+    },
+    {
+        StepNo : 16,
+        Description : "Proin et tellus a mi lobortis suscipit",
+        NodesToSendValue : [
             {
-                NodeId : "ST300.MES.St301InputCAM1",
-                NodeDesiredValue : "3",
+                NodeId : "ST300.MES.St300ProgramJob4",
+                NodeDesiredValue : "1",
                 NodeDataType : DataType.Int32
             },
         ]
+    },
+    {
+        StepNo : 17,
+        Description : "Proin et tellus a mi lobortis suscipit",
+        NodesToCheckValue : [
+            {
+                NodeId : "ST300.MES.St300ProgramJob4",
+                NodeDesiredValue : "2",
+                NodeDataType : DataType.Int32
+            }
+        ]
     },    
+    {
+        StepNo : 18,
+        Description : "Proin et tellus a mi lobortis suscipit",
+        NodesToSendValue : [
+            {
+                NodeId : "ST300.MES.St300ProgramJob4",
+                NodeDesiredValue : "1",
+                NodeDataType : DataType.Int32
+            },
+        ]
+    },
+    {
+        StepNo : 19,
+        Description : "Proin et tellus a mi lobortis suscipit",
+        NodesToCheckValue : [
+            {
+                NodeId : "ST300.MES.St300MoveNode2",
+                NodeDesiredValue : "2",
+                NodeDataType : DataType.Int32
+            },
+            {
+                NodeId : "ST300.MES.St300ProgramJob4",
+                NodeDesiredValue : "2",
+                NodeDataType : DataType.Int32
+            }
+        ]
+    },
+    {
+        StepNo : 20,
+        Description : "Proin et tellus a mi lobortis suscipit",
+        NodesToSendValue : [
+            {
+                NodeId : "ST300.MES.St300ProgramJob5",
+                NodeDesiredValue : "1",
+                NodeDataType : DataType.Int32
+            },
+        ]
+    },
+    {
+        StepNo : 21,
+        Description : "Proin et tellus a mi lobortis suscipit",
+        NodesToCheckValue : [
+            {
+                NodeId : "ST300.MES.St301InputCAM2",
+                NodeDesiredValue : "2",
+                NodeDataType : DataType.Int32
+            }
+        ]
+    },  
+    {
+        StepNo : 22,
+        Description : "Proin et tellus a mi lobortis suscipit",
+        NodesToSendValue : [
+            {
+                NodeId : "ST300.MES.St300MoveNode3",
+                NodeDesiredValue : "1",
+                NodeDataType : DataType.Int32
+            },
+        ]
+    },
+    {
+        StepNo : 23,
+        Description : "Proin et tellus a mi lobortis suscipit",
+        NodesToCheckValue : [
+            {
+                NodeId : "ST300.MES.St300MoveNode3",
+                NodeDesiredValue : "2",
+                NodeDataType : DataType.Int32
+            }
+        ]
+    },
+    {
+        StepNo : 24,
+        Description : "Proin et tellus a mi lobortis suscipit",
+        NodesToSendValue : [
+            {
+                NodeId : "ST300.MES.St300PickTransferShaft",
+                NodeDesiredValue : "1",
+                NodeDataType : DataType.Int32
+            },
+        ]
+    },
+    {
+        StepNo : 25,
+        Description : "Proin et tellus a mi lobortis suscipit",
+        NodesToCheckValue : [
+            {
+                NodeId : "ST300.MES.St300PickTransferShaft",
+                NodeDesiredValue : "2",
+                NodeDataType : DataType.Int32
+            },
+            {
+                NodeId : "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320MachineState",
+                NodeDesiredValue : "4",
+                NodeDataType : DataType.Int16
+            },            {
+                NodeId : "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320ProcessStatus",
+                NodeDesiredValue : 0,
+                NodeDataType : DataType.Byte
+            },
+            {
+                NodeId : "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320DoorIsOpen",
+                NodeDesiredValue : false,
+                NodeDataType : DataType.Boolean
+            },
+            {
+                NodeId : "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320WorkOrderActive",
+                NodeDesiredValue : false,
+                NodeDataType : DataType.Boolean
+            }
+        ]
+    },        
 ];
