@@ -66,13 +66,7 @@ div.bullet:last-child {
   border-bottom-left-radius: 0;
 }
 
-div.bullet.succeed:before{
-  background-color: green;
-}
 
-div.bullet.failed:before{
-  background-color: crimson;
-}
 
 div.bullet.active:before {
   animation: blinker 3s linear infinite;
@@ -80,6 +74,14 @@ div.bullet.active:before {
 
 div.bullet.waiting:before {
   background-color: gray;
+}
+
+div.bullet.succeed:before{
+  background-color: green;
+}
+
+div.bullet.failed:before{
+  background-color: crimson;
 }
 
 div.bullet.action:hover:before 

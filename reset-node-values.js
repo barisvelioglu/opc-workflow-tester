@@ -16,5 +16,11 @@ module.exports = [
     { nodeId : "ST300.MES.St300BearingType1_2", value : 0, dataType : DataType.Int32 },
     { nodeId : "ST300.MES.St300BearingType2_1", value : 0, dataType : DataType.Int32 },
     { nodeId : "ST300.MES.St300BearingType2_2", value : 0, dataType : DataType.Int32 },
-    { nodeId : "ST300.MES.St300TransferShaftClassic", value : 0, dataType : DataType.Int32 }
+    { nodeId : "ST300.MES.St300TransferShaftClassic", value : 0, dataType : DataType.Int32 },
+    { nodeId : "ST300.MES.St300ProgramJob1", value : 0, dataType : DataType.Int32 },
+    { nodeId : "ST300.MES.St300ProgramJob2", value : 0, dataType : DataType.Int32 },
+    { nodeId : "ST300.MES.St300ProgramJob3", value : 0, dataType : DataType.Int32 },
+    { nodeId : "ST300.MES.St300ProgramJob4", value : 0, dataType : DataType.Int32 },
+    { nodeId : "ST300.MES.St301InputCAM1", value : 0, dataType : DataType.Int32 },
+    
 ];

@@ -10,17 +10,17 @@ block content
     });
 
     socket.on("step", function (data) {
-      //check all below!!!
-      //nodes to check value
-      //nodes to send value
-      $("div[data-step='" + el.StepNo + "']")
-        .removeClass('waiting') 
-        .removeClass('active')                   
-        .addClass('succeed');
 
-      $("div[data-step='" + (el.StepNo + 1) + "']")
-        .removeClass('waiting')
-        .addClass('active');
+      if(data.state == "Succeed"){
+        $("div[data-step='" + data.stepNo + "']")            
+          .addClass('succeed');
+      }else{
+         $("div[data-step='" + data.stepNo + "']")            
+          .removeClass('succeed');
+      }
+      
+      //$("div[data-step='" + (el.StepNo + 1) + "']")
+
     });
 
   h1.text-center CNC TEST

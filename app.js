@@ -18,7 +18,7 @@ var                   _ = require('lodash');
 
 var app               = express();
 var port              = 3000;
-var currentSteps      = require('./test-steps');
+var currentSteps      = undefined
 var currentTestDb     = undefined;
 
 console.log("--- steps ---");
@@ -34,7 +34,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
+app.get('/', function(req, res, next) {
+  res.render('index', { title: 'CNC Test', steps : currentSteps || [] });
+});
+
 app.use('/test', testRouter);
 
 // catch 404 and forward to error handler
@@ -71,6 +74,7 @@ io.sockets.on('connection', function (client) {
   }
 
   client.on('start-test', async function(data){
+    currentSteps     = require('./test-steps');
     let fileDateName = moment().format("DDMMYYYYThhmmss");
     currentTestDb = new JSONdb('./tests/'+fileDateName+'.json');
     
@@ -107,6 +111,76 @@ io.sockets.on('connection', function (client) {
   
 });
 
+function checkAndSetStates(nodeId, value){
+  //Active Waiting Succeed
+  //check all states and make succeed or not
+  for (var xx = 0; xx < currentSteps.length; xx++) {
+    var cs = currentSteps[xx];
+
+    //check all values for currentState
+    if(cs.NodesToCheckValue){
+      let isSucceed = true;
+      for (let ii = 0; ii < cs.NodesToCheckValue.length; ii++) {
+        let node = cs.NodesToCheckValue[ii];
+        
+        if(node.NodeId == nodeId){
+          node.NodeCurrentValue = value;
+        }
+
+        if(node.NodeDesiredValue != node.NodeCurrentValue){
+          isSucceed = false;
+        }
+      }
+      
+      if(isSucceed){
+        cs.State = "Succeed";
+      }else{
+        cs.State = "Waiting"
+      }
+
+      //burada step sonucu gönderilebilir gibi duruyor direkt 
+      //ui da hesap yapılmasına gerek olmaz
+      io.sockets.emit("step", {
+        nodeId: nodeId,
+        stepNo: cs.StepNo,
+        state : cs.State
+      });
+      
+    }
+
+    //check all values for currentState
+    if(cs.NodesToSendValue){
+      let isSucceed = true;
+      for (let ii = 0; ii < cs.NodesToSendValue.length; ii++) {
+        let node = cs.NodesToSendValue[ii];
+        
+        if(node.NodeId == nodeId){
+          node.NodeCurrentValue = value;
+        }
+
+        if(node.NodeDesiredValue != node.NodeCurrentValue){
+          isSucceed = false;
+        }
+      }
+      
+      if(isSucceed){
+        cs.State = "Succeed";
+      }else{
+        cs.State = "Waiting"
+      }
+
+      io.sockets.emit("step", {
+        nodeId: nodeId,
+        stepNo: cs.StepNo,
+        state : cs.State
+      });
+      
+    }
+  }
+
+  currentTestDb.set('state', currentSteps);
+}
+
 (async function init(){
   await opcClient.initialize();
 
@@ -120,47 +194,7 @@ io.sockets.on('connection', function (client) {
 
         await opcClient.monitor(el.NodeId, function(data){
           
-          //Active Waiting Succeed
-          //check all states and make succeed or not
-          for (var xx = 0; xx < currentSteps.length; xx++) {
-            var cs = currentSteps[xx];
-
-            console.log("****************************************************************")
-            console.log(xx);
-
-            //check all values for currentState
-            if(cs.NodesToCheckValue){
-              let isSucceed = true;
-              for (let ii = 0; ii < cs.NodesToCheckValue.length; ii++) {
-                let node = cs.NodesToCheckValue[ii];
-                
-                if(node.NodeId == el.NodeId){
-                  node.NodeCurrentValue = data.value.value;
-                }
-
-                if(node.NodeDesiredValue != node.NodeCurrentValue){
-                  isSucceed = false;
-                }
-              }
-              
-              if(isSucceed){
-                cs.State = "Succeed";
-              }else{
-                cs.State = "Waiting"
-              }
-
-              //burada step sonucu gönderilebilir gibi duruyor direkt 
-              //ui da hesap yapılmasına gerek olmaz
-              io.sockets.emit("step", {
-                nodeId: el.NodeId,
-                stepNo: cs.StepNo,
-                state : cs.State
-              });
-              
-            }
-          }
-
-          currentTestDb.set('state', currentSteps);
+          checkAndSetStates(el.NodeId, data.value.value);
 
           io.sockets.emit("nodeValueChange", {
             value: data.value.value,
@@ -177,6 +211,8 @@ io.sockets.on('connection', function (client) {
         const el = step.NodesToSendValue[x];
         await helpers.wait(250);
         await opcClient.monitor(el.NodeId, function(data){
+
+          checkAndSetStates(el.NodeId, data.value.value);
 
           io.sockets.emit("nodeValueChange", {
             value: data.value.value,

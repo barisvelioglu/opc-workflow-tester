@@ -116,5 +116,131 @@ module.exports = [
             }
 
         ]
-    }
+    },
+    {
+        StepNo : 6,
+        Description : "Proin et tellus a mi lobortis suscipit",
+        NodesToSendValue : [
+            {
+                NodeId : "ST300.MES.St300MoveNode2",
+                NodeDesiredValue : "1",
+                NodeDataType : DataType.Int32
+            },
+        ]
+    },
+    {
+        StepNo : 7,
+        Description : "Proin et tellus a mi lobortis suscipit",
+        NodesToCheckValue : [
+            {
+                NodeId : "ST300.MES.St300MoveNode2",
+                NodeDesiredValue : "2",
+                NodeDataType : DataType.Int32
+            },            
+            {
+                NodeId : "ST300.MES.St301Status",
+                NodeDesiredValue : "1",
+                NodeDataType : DataType.Int32
+            },
+        ]
+    },
+    {
+        StepNo : 8,
+        Description : "Proin et tellus a mi lobortis suscipit",
+        NodesToSendValue : [
+            {
+                NodeId : "ST300.MES.St300ProgramJob1",
+                NodeDesiredValue : "1",
+                NodeDataType : DataType.Int32
+            },
+        ]
+    },
+    {
+        StepNo : 9,
+        Description : "Proin et tellus a mi lobortis suscipit",
+        NodesToCheckValue : [
+            {
+                NodeId : "ST300.MES.St300ProgramJob1",
+                NodeDesiredValue : "2",
+                NodeDataType : DataType.Int32
+            },
+        ]
+    },
+    {
+        StepNo : 10,
+        Description : "Proin et tellus a mi lobortis suscipit",
+        NodesToSendValue : [
+            {
+                NodeId : "ST300.MES.St300ProgramJob2",
+                NodeDesiredValue : "1",
+                NodeDataType : DataType.Int32
+            },
+        ]
+    },
+    {
+        StepNo : 11,
+        Description : "Proin et tellus a mi lobortis suscipit",
+        NodesToCheckValue : [
+            {
+                NodeId : "ST300.MES.St300ProgramJob2",
+                NodeDesiredValue : "2",
+                NodeDataType : DataType.Int32
+            },
+        ]
+    },
+    {
+        StepNo : 12,
+        Description : "Proin et tellus a mi lobortis suscipit",
+        NodesToSendValue : [
+            {
+                NodeId : "ST300.MES.St300ProgramJob3",
+                NodeDesiredValue : "1",
+                NodeDataType : DataType.Int32
+            },
+        ]
+    },
+    {
+        StepNo : 13,
+        Description : "Proin et tellus a mi lobortis suscipit",
+        NodesToCheckValue : [
+            {
+                NodeId : "ST300.MES.St300ProgramJob3",
+                NodeDesiredValue : "2",
+                NodeDataType : DataType.Int32
+            },            
+            {
+                NodeId : "ST300.MES.St301InputCAM1",
+                NodeDesiredValue : "3",
+                NodeDataType : DataType.Int32
+            },
+        ]
+    },
+    //34.satıra kadar ki kısım
+    {
+        StepNo : 14,
+        Description : "Proin et tellus a mi lobortis suscipit",
+        NodesToSendValue : [
+            {
+                NodeId : "ST300.MES.St300ProgramJob3",
+                NodeDesiredValue : "1",
+                NodeDataType : DataType.Int32
+            },
+        ]
+    },
+    {
+        StepNo : 15,
+        Description : "Proin et tellus a mi lobortis suscipit",
+        NodesToCheckValue : [
+            {
+                NodeId : "ST300.MES.St300ProgramJob3",
+                NodeDesiredValue : "2",
+                NodeDataType : DataType.Int32
+            },            
+            {
+                NodeId : "ST300.MES.St301InputCAM1",
+                NodeDesiredValue : "3",
+                NodeDataType : DataType.Int32
+            },
+        ]
+    },    
 ];
