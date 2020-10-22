@@ -7,7 +7,7 @@ body {
   font-family: 'Open Sans', sans-serif;
   margin: 0;
   padding: 0 4em;
-  font-size:15px;
+  font-size:13px;
 }
 main {
   min-width: 650px;
@@ -126,6 +126,12 @@ ul li:nth-child(odd) {
   background-color: green;
   color: #FFF;
   font-weight: bold;
+}
+
+.description
+{
+  font-weight: bold;
+  font-size: 14px;
 }
 
 

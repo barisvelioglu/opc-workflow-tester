@@ -1,0 +1,2081 @@
+{
+    "state": [
+        {
+            "Description": "IIWA READY",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "ST300.MES.St300MachineStatus",
+                    "NodeDesiredValue": 1
+                }
+            ],
+            "StepNo": 1,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA GO CNC buffer area",
+            "NodesToSendValue": [
+                {
+                    "NodeId": "ST300.MES.St300WorkOrder",
+                    "NodeDesiredValue": "1000148.3",
+                    "NodeDataType": 12
+                },
+                {
+                    "NodeId": "ST300.MES.St300GearRatio",
+                    "NodeDesiredValue": "20:1",
+                    "NodeDataType": 12
+                },
+                {
+                    "NodeId": "ST300.MES.St300MoveNode1",
+                    "NodeDesiredValue": "1",
+                    "NodeDataType": 6
+                }
+            ],
+            "StepNo": 2,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA In node 1",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "ST300.MES.St300MoveNode1",
+                    "NodeDesiredValue": "2"
+                }
+            ],
+            "StepNo": 3,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA Take blank input shaft from line 1.1 and put on tray.30304 from line 2.1, 32205 from line 3.1 and 3.2, transfer shaft from 4.1 and tranfer gear from 5.1 and put on tray",
+            "NodesToSendValue": [
+                {
+                    "NodeId": "ST300.MES.St300CollectParts",
+                    "NodeDesiredValue": "1",
+                    "NodeDataType": 6
+                },
+                {
+                    "NodeId": "ST300.MES.St300RawTransferGear",
+                    "NodeDesiredValue": "1",
+                    "NodeDataType": 6
+                },
+                {
+                    "NodeId": "ST300.MES.St300BearingType1_1",
+                    "NodeDesiredValue": "1",
+                    "NodeDataType": 6
+                },
+                {
+                    "NodeId": "ST300.MES.St300BearingType1_2",
+                    "NodeDesiredValue": "1",
+                    "NodeDataType": 6
+                },
+                {
+                    "NodeId": "ST300.MES.St300BearingType2_1",
+                    "NodeDesiredValue": "1",
+                    "NodeDataType": 6
+                },
+                {
+                    "NodeId": "ST300.MES.St300BearingType2_2",
+                    "NodeDesiredValue": "1",
+                    "NodeDataType": 6
+                },
+                {
+                    "NodeId": "ST300.MES.St300TransferShaftClassic",
+                    "NodeDesiredValue": "1",
+                    "NodeDataType": 6
+                }
+            ],
+            "StepNo": 4,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA Parts on tray",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "ST300.MES.St300CollectParts",
+                    "NodeDesiredValue": "2"
+                },
+                {
+                    "NodeId": "ST300.MES.St300RawTransferGear",
+                    "NodeDesiredValue": "99"
+                },
+                {
+                    "NodeId": "ST300.MES.St300BearingType1_1",
+                    "NodeDesiredValue": "99"
+                },
+                {
+                    "NodeId": "ST300.MES.St300BearingType1_2",
+                    "NodeDesiredValue": "99"
+                },
+                {
+                    "NodeId": "ST300.MES.St300BearingType2_1",
+                    "NodeDesiredValue": "99"
+                },
+                {
+                    "NodeId": "ST300.MES.St300BearingType2_2",
+                    "NodeDesiredValue": "99"
+                },
+                {
+                    "NodeId": "ST300.MES.St300TransferShaftClassic",
+                    "NodeDesiredValue": "99"
+                }
+            ],
+            "StepNo": 5,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA Go node 2 (CNC)",
+            "NodesToSendValue": [
+                {
+                    "NodeId": "ST300.MES.St300MoveNode2",
+                    "NodeDesiredValue": "1",
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 6,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA In node 2 (CNC) & CNC READY",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "ST300.MES.St300MoveNode2",
+                    "NodeDesiredValue": "2",
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                },
+                {
+                    "NodeId": "ST300.MES.St301Status",
+                    "NodeDesiredValue": "1",
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 7,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA Start Program Code #KnockKnock (#)",
+            "NodesToSendValue": [
+                {
+                    "NodeId": "ST300.MES.St300ProgramJob1",
+                    "NodeDesiredValue": "1",
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 8,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA Program Code #KnockKnock (#)",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "ST300.MES.St300ProgramJob1",
+                    "NodeDesiredValue": "2",
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 9,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA Start Program Code #LoadLeftSide (#)",
+            "NodesToSendValue": [
+                {
+                    "NodeId": "ST300.MES.St300ProgramJob2",
+                    "NodeDesiredValue": "1",
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 10,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA Start Program Code #LoadLeftSide (#)",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "ST300.MES.St300ProgramJob2",
+                    "NodeDesiredValue": "2",
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 11,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA Start Program Code #InputShaftCAM1 (#)",
+            "NodesToSendValue": [
+                {
+                    "NodeId": "ST300.MES.St300ProgramJob3",
+                    "NodeDesiredValue": "1",
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 12,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA CAM 1 Program Started",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "ST300.MES.St300ProgramJob3",
+                    "NodeDesiredValue": "2",
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                },
+                {
+                    "NodeId": "ST300.MES.St301InputCAM1",
+                    "NodeDesiredValue": "2",
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 13,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA CAM 1 Program Started",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "ST300.MES.St301InputCAM1",
+                    "NodeDesiredValue": "3",
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 14,
+            "State": "Waiting"
+        },
+        {
+            "Description": "Proin et tellus a mi lobortis suscipit",
+            "NodesToSendValue": [
+                {
+                    "NodeId": "ST300.MES.St300ProgramJob1",
+                    "NodeDesiredValue": "1",
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 15,
+            "State": "Waiting"
+        },
+        {
+            "Description": "Proin et tellus a mi lobortis suscipit",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "ST300.MES.St300ProgramJob1",
+                    "NodeDesiredValue": "2",
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 16,
+            "State": "Waiting"
+        },
+        {
+            "Description": "Proin et tellus a mi lobortis suscipit",
+            "NodesToSendValue": [
+                {
+                    "NodeId": "ST300.MES.St300ProgramJob4",
+                    "NodeDesiredValue": "1",
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 17,
+            "State": "Waiting"
+        },
+        {
+            "Description": "Proin et tellus a mi lobortis suscipit",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "ST300.MES.St300ProgramJob4",
+                    "NodeDesiredValue": "2",
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 18,
+            "State": "Waiting"
+        },
+        {
+            "Description": "Proin et tellus a mi lobortis suscipit",
+            "NodesToSendValue": [
+                {
+                    "NodeId": "ST300.MES.St300ProgramJob4",
+                    "NodeDesiredValue": "1",
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 19,
+            "State": "Waiting"
+        },
+        {
+            "Description": "Proin et tellus a mi lobortis suscipit",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "ST300.MES.St300MoveNode2",
+                    "NodeDesiredValue": "2",
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                },
+                {
+                    "NodeId": "ST300.MES.St300ProgramJob4",
+                    "NodeDesiredValue": "2",
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 20,
+            "State": "Waiting"
+        },
+        {
+            "Description": "Proin et tellus a mi lobortis suscipit",
+            "NodesToSendValue": [
+                {
+                    "NodeId": "ST300.MES.St300ProgramJob5",
+                    "NodeDesiredValue": "1",
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 21,
+            "State": "Waiting"
+        },
+        {
+            "Description": "Proin et tellus a mi lobortis suscipit",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "ST300.MES.St301InputCAM2",
+                    "NodeDesiredValue": "2",
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 22,
+            "State": "Waiting"
+        },
+        {
+            "Description": "Proin et tellus a mi lobortis suscipit",
+            "NodesToSendValue": [
+                {
+                    "NodeId": "ST300.MES.St300MoveNode3",
+                    "NodeDesiredValue": "1",
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 23,
+            "State": "Waiting"
+        },
+        {
+            "Description": "Proin et tellus a mi lobortis suscipit",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "ST300.MES.St300MoveNode3",
+                    "NodeDesiredValue": "2",
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 24,
+            "State": "Waiting"
+        },
+        {
+            "Description": "Proin et tellus a mi lobortis suscipit",
+            "NodesToSendValue": [
+                {
+                    "NodeId": "ST300.MES.St300PickTransferShaft",
+                    "NodeDesiredValue": "1",
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 25,
+            "State": "Waiting"
+        },
+        {
+            "Description": "Proin et tellus a mi lobortis suscipit",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "ST300.MES.St300PickTransferShaft",
+                    "NodeDesiredValue": "2",
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                },
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320MachineState",
+                    "NodeDesiredValue": "4",
+                    "NodeDataType": 4,
+                    "NodeCurrentValue": 0
+                },
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320ProcessStatus",
+                    "NodeDesiredValue": 0,
+                    "NodeDataType": 3,
+                    "NodeCurrentValue": 0
+                },
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320DoorIsOpen",
+                    "NodeDesiredValue": false,
+                    "NodeDataType": 1,
+                    "NodeCurrentValue": false
+                },
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320WorkOrderActive",
+                    "NodeDesiredValue": false,
+                    "NodeDataType": 1,
+                    "NodeCurrentValue": false
+                }
+            ],
+            "StepNo": 26,
+            "State": "Waiting"
+        },
+        {
+            "Description": "Laser Start Process",
+            "NodesToSendValue": [
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320WorkOrderNo",
+                    "NodeDesiredValue": "1000104.13",
+                    "NodeDataType": 12,
+                    "NodeCurrentValue": null
+                },
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320ProductType",
+                    "NodeDesiredValue": 4,
+                    "NodeDataType": 4
+                },
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320IIWAinNode3",
+                    "NodeDesiredValue": true,
+                    "NodeDataType": 1,
+                    "NodeCurrentValue": false
+                }
+            ],
+            "StepNo": 27,
+            "State": "Waiting"
+        },
+        {
+            "Description": "Laser DoorIsOpen",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320DoorIsOpen",
+                    "NodeDesiredValue": true,
+                    "NodeDataType": 1,
+                    "NodeCurrentValue": false
+                }
+            ],
+            "StepNo": 28,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA Locate transfer shaft under camera area",
+            "NodesToSendValue": [
+                {
+                    "NodeId": "ST300.MES.St300ReadProcess",
+                    "NodeDesiredValue": 1,
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 29,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA In Position, Parts placed on true places to start the operation",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "ST300.MES.St300ReadProcess",
+                    "NodeDesiredValue": 2,
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                },
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320PartsPlaced",
+                    "NodeDesiredValue": true,
+                    "NodeDataType": 1,
+                    "NodeCurrentValue": false
+                }
+            ],
+            "StepNo": 30,
+            "State": "Waiting"
+        },
+        {
+            "Description": "Laser IIWAInReadPosition",
+            "NodesToSendValue": [
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320WorkOrderActive",
+                    "NodeDesiredValue": true,
+                    "NodeDataType": 1,
+                    "NodeCurrentValue": false
+                }
+            ],
+            "StepNo": 31,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA In Position, Parts placed on true places to start the operation",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320ProcessStatus",
+                    "NodeDesiredValue": 16,
+                    "NodeDataType": 3,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 32,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA In Position, Parts placed on true places to start the operation",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320ProcessStatus",
+                    "NodeDesiredValue": 32,
+                    "NodeDataType": 3,
+                    "NodeCurrentValue": 0
+                },
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320DMCReadCode",
+                    "NodeDesiredValue": "*",
+                    "NodeDataType": 12,
+                    "NodeCurrentValue": null
+                },
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320PartResult",
+                    "NodeDesiredValue": "1",
+                    "NodeDataType": 3,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 33,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA Put transfer shaft on tray",
+            "NodesToSendValue": [
+                {
+                    "NodeId": "ST300.MES.St300TransferShaftLoadTray",
+                    "NodeDesiredValue": 1,
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 34,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA Part on tray",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "ST300.MES.St300TransferShaftLoadTray",
+                    "NodeDesiredValue": 2,
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 35,
+            "State": "Waiting"
+        },
+        {
+            "Description": "Laser IIWA Leave the zone",
+            "NodesToSendValue": [
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320IIWAinNode3",
+                    "NodeDesiredValue": false,
+                    "NodeDataType": 1,
+                    "NodeCurrentValue": false
+                },
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320ProcessStatus",
+                    "NodeDesiredValue": 0,
+                    "NodeDataType": 3,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 36,
+            "State": "Succeed"
+        },
+        {
+            "Description": "Laser READY",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320MachineState",
+                    "NodeDesiredValue": "4",
+                    "NodeDataType": 4,
+                    "NodeCurrentValue": 0
+                },
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320ProcessStatus",
+                    "NodeDesiredValue": 0,
+                    "NodeDataType": 3,
+                    "NodeCurrentValue": 0
+                },
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320DoorIsOpen",
+                    "NodeDesiredValue": false,
+                    "NodeDataType": 1,
+                    "NodeCurrentValue": false
+                },
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320WorkOrderActive",
+                    "NodeDesiredValue": false,
+                    "NodeDataType": 1,
+                    "NodeCurrentValue": false
+                }
+            ],
+            "StepNo": 37,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA Go node 2 (CNC)",
+            "NodesToSendValue": [
+                {
+                    "NodeId": "ST300.MES.St300MoveNode2",
+                    "NodeDesiredValue": 1,
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 38,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA In node 2 (CNC)",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "ST300.MES.St300MoveNode2",
+                    "NodeDesiredValue": 2,
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 39,
+            "State": "Waiting"
+        },
+        {
+            "Description": "CNC CAM 2 Program finished",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "ST300.MES.St301InputCAM2",
+                    "NodeDesiredValue": 3,
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 40,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA Program Code #InputShaftCAM2 (#) //St300ProgramJob10=2",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "ST300.MES.St300ProgramJob5",
+                    "NodeDesiredValue": 2,
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                },
+                {
+                    "NodeId": "ST300.MES.St301Status",
+                    "NodeDesiredValue": 1,
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 41,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA Start Program Code #KnockKnock (#)",
+            "NodesToSendValue": [
+                {
+                    "NodeId": "ST300.MES.St300ProgramJob1",
+                    "NodeDesiredValue": 1,
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 42,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA Program Code #KnockKnock (#)",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "ST300.MES.St300ProgramJob1",
+                    "NodeDesiredValue": 2,
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 43,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA Start Program Code #UnloadtheLeft (#)",
+            "NodesToSendValue": [
+                {
+                    "NodeId": "ST300.MES.St300ProgramJob6",
+                    "NodeDesiredValue": 1,
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 44,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA Program Code #UnloadtheLeft (#)",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "ST300.MES.St300ProgramJob6",
+                    "NodeDesiredValue": 2,
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 45,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA Start Program Code #LoadLeftSide (#)",
+            "NodesToSendValue": [
+                {
+                    "NodeId": "ST300.MES.St300ProgramJob9",
+                    "NodeDesiredValue": 1,
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 46,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA Program Code #UnloadtheLeft (#)",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "ST300.MES.St300ProgramJob9",
+                    "NodeDesiredValue": 2,
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 47,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA Start Program Code #TransferGearCAM1 (#)",
+            "NodesToSendValue": [
+                {
+                    "NodeId": "ST300.MES.St300ProgramJob7",
+                    "NodeDesiredValue": 1,
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 48,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA Program Code #UnloadtheLeft (#)",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "ST300.MES.St301TransferCAM2",
+                    "NodeDesiredValue": 3,
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 49,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA Go node 3 (Laser)",
+            "NodesToSendValue": [
+                {
+                    "NodeId": "ST300.MES.St300MoveNode3",
+                    "NodeDesiredValue": 1,
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 50,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA In node 3 (Laser)",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "ST300.MES.St300MoveNode3",
+                    "NodeDesiredValue": 2,
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 51,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA Go node 3 (Laser)",
+            "NodesToSendValue": [
+                {
+                    "NodeId": "ST300.MES.St300MoveNode3",
+                    "NodeDesiredValue": 1,
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 52,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA In node 3 (Laser)",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "ST300.MES.St300MoveNode3",
+                    "NodeDesiredValue": 2,
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 53,
+            "State": "Waiting"
+        },
+        {
+            "Description": "Laser READY",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320MachineState",
+                    "NodeDesiredValue": "4",
+                    "NodeDataType": 4,
+                    "NodeCurrentValue": 0
+                },
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320ProcessStatus",
+                    "NodeDesiredValue": 0,
+                    "NodeDataType": 3,
+                    "NodeCurrentValue": 0
+                },
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320DoorIsOpen",
+                    "NodeDesiredValue": false,
+                    "NodeDataType": 1,
+                    "NodeCurrentValue": false
+                },
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320WorkOrderActive",
+                    "NodeDesiredValue": false,
+                    "NodeDataType": 1,
+                    "NodeCurrentValue": false
+                }
+            ],
+            "StepNo": 54,
+            "State": "Waiting"
+        },
+        {
+            "Description": "Laser Start Process",
+            "NodesToSendValue": [
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320WorkOrderNo",
+                    "NodeDesiredValue": "1000104.13",
+                    "NodeDataType": 12,
+                    "NodeCurrentValue": null
+                },
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320DMCSerialNo",
+                    "NodeDesiredValue": "2042-1072-001",
+                    "NodeDataType": 12,
+                    "NodeCurrentValue": null
+                },
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320ProductType",
+                    "NodeDesiredValue": 1,
+                    "NodeDataType": 4
+                },
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320IIWAinNode3",
+                    "NodeDesiredValue": true,
+                    "NodeDataType": 1,
+                    "NodeCurrentValue": false
+                }
+            ],
+            "StepNo": 55,
+            "State": "Waiting"
+        },
+        {
+            "Description": "Laser Door Opened",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320DoorIsOpen",
+                    "NodeDesiredValue": true,
+                    "NodeDataType": 1,
+                    "NodeCurrentValue": false
+                }
+            ],
+            "StepNo": 56,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA Put input shaft on fixture 320.1",
+            "NodesToSendValue": [
+                {
+                    "NodeId": "ST300.MES.St300InputEngravingLoad",
+                    "NodeDesiredValue": 1,
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 57,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA Part on location",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "ST300.MES.St300InputEngravingLoad",
+                    "NodeDesiredValue": 2,
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                },
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320PartsPlaced",
+                    "NodeDesiredValue": true,
+                    "NodeDataType": 1,
+                    "NodeCurrentValue": false
+                }
+            ],
+            "StepNo": 58,
+            "State": "Waiting"
+        },
+        {
+            "Description": "Laser Start Program",
+            "NodesToSendValue": [
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320WorkOrderActive",
+                    "NodeDesiredValue": true,
+                    "NodeDataType": 1,
+                    "NodeCurrentValue": false
+                }
+            ],
+            "StepNo": 59,
+            "State": "Waiting"
+        },
+        {
+            "Description": "Laser Start Process",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320ProcessStatus",
+                    "NodeDesiredValue": 1,
+                    "NodeDataType": 3,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 60,
+            "State": "Waiting"
+        },
+        {
+            "Description": "Laser Finish Process",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320ProcessStatus",
+                    "NodeDesiredValue": 2,
+                    "NodeDataType": 3,
+                    "NodeCurrentValue": 0
+                },
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320PartResult",
+                    "NodeDesiredValue": "1",
+                    "NodeDataType": 3,
+                    "NodeCurrentValue": 0
+                },
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320DoorIsOpen",
+                    "NodeDesiredValue": true,
+                    "NodeDataType": 1,
+                    "NodeCurrentValue": false
+                }
+            ],
+            "StepNo": 61,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA Take input shaft from fixture 320.1 and put on tray",
+            "NodesToSendValue": [
+                {
+                    "NodeId": "ST300.MES.St300LoadInputShaft",
+                    "NodeDesiredValue": 1,
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 62,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA On position",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "ST300.MES.St300LoadInputShaft",
+                    "NodeDesiredValue": 2,
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 63,
+            "State": "Waiting"
+        },
+        {
+            "Description": "Laser Close Door",
+            "NodesToSendValue": [
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320IIWAinNode3",
+                    "NodeDesiredValue": false,
+                    "NodeDataType": 1,
+                    "NodeCurrentValue": false
+                },
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320ProcessStatus",
+                    "NodeDesiredValue": 0,
+                    "NodeDataType": 3,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 64,
+            "State": "Succeed"
+        },
+        {
+            "Description": "Laser Door Closed",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320DoorIsOpen",
+                    "NodeDesiredValue": false,
+                    "NodeDataType": 1,
+                    "NodeCurrentValue": false
+                }
+            ],
+            "StepNo": 65,
+            "State": "Succeed"
+        },
+        {
+            "Description": "Laser READY",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320MachineState",
+                    "NodeDesiredValue": "4",
+                    "NodeDataType": 4,
+                    "NodeCurrentValue": 0
+                },
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320ProcessStatus",
+                    "NodeDesiredValue": 0,
+                    "NodeDataType": 3,
+                    "NodeCurrentValue": 0
+                },
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320DoorIsOpen",
+                    "NodeDesiredValue": false,
+                    "NodeDataType": 1,
+                    "NodeCurrentValue": false
+                },
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320WorkOrderActive",
+                    "NodeDesiredValue": false,
+                    "NodeDataType": 1,
+                    "NodeCurrentValue": false
+                }
+            ],
+            "StepNo": 66,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA Go node 4 (press)",
+            "NodesToSendValue": [
+                {
+                    "NodeId": "ST300.MES.St300MoveNode4",
+                    "NodeDesiredValue": 1,
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 67,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA In node 4 (press)",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "ST300.MES.St300MoveNode4",
+                    "NodeDesiredValue": 2,
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 68,
+            "State": "Waiting"
+        },
+        {
+            "Description": "Press READY",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "St310.St310.310_000+S-K010.DataBlocksGlobal.OPC.St310MachineState",
+                    "NodeDesiredValue": "4",
+                    "NodeDataType": 4,
+                    "NodeCurrentValue": 0
+                },
+                {
+                    "NodeId": "St310.St310.310_000+S-K010.DataBlocksGlobal.OPC.St310ProcessStatus",
+                    "NodeDesiredValue": 0,
+                    "NodeDataType": 3,
+                    "NodeCurrentValue": 0
+                },
+                {
+                    "NodeId": "St310.St310.310_000+S-K010.DataBlocksGlobal.OPC.St310DoorIsOpen",
+                    "NodeDesiredValue": false,
+                    "NodeDataType": 1,
+                    "NodeCurrentValue": false
+                },
+                {
+                    "NodeId": "St310.St310.310_000+S-K010.DataBlocksGlobal.OPC.St310WorkOrderActive",
+                    "NodeDesiredValue": false,
+                    "NodeDataType": 1,
+                    "NodeCurrentValue": false
+                }
+            ],
+            "StepNo": 69,
+            "State": "Waiting"
+        },
+        {
+            "Description": "Press Start Process",
+            "NodesToSendValue": [
+                {
+                    "NodeId": "St310.St310.310_000+S-K010.DataBlocksGlobal.OPC.St310WorkOrderNo",
+                    "NodeDesiredValue": "1000104.13",
+                    "NodeDataType": 12,
+                    "NodeCurrentValue": null
+                },
+                {
+                    "NodeId": "St310.St310.310_000+S-K010.DataBlocksGlobal.OPC.St310ProductType",
+                    "NodeDesiredValue": 1,
+                    "NodeDataType": 4
+                },
+                {
+                    "NodeId": "St310.St310.310_000+S-K010.DataBlocksGlobal.OPC.St310IIWAinNode4",
+                    "NodeDesiredValue": true,
+                    "NodeDataType": 1,
+                    "NodeCurrentValue": false
+                }
+            ],
+            "StepNo": 70,
+            "State": "Waiting"
+        },
+        {
+            "Description": "Press Door Opened",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "St310.St310.310_000+S-K010.DataBlocksGlobal.OPC.St310DoorIsOpen",
+                    "NodeDesiredValue": true,
+                    "NodeDataType": 1,
+                    "NodeCurrentValue": false
+                }
+            ],
+            "StepNo": 71,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA Put input shaft on fixture 310.1, 30304 to 310.2 and 32205 to 310.3",
+            "NodesToSendValue": [
+                {
+                    "NodeId": "ST300.MES.St300LoadInputSubAssyParts",
+                    "NodeDesiredValue": 1,
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 72,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA Part on location",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "ST300.MES.St300LoadInputSubAssyParts",
+                    "NodeDesiredValue": 2,
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 73,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA Part on location",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "ST300.MES.St300LoadInputSubAssyParts",
+                    "NodeDesiredValue": 2,
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                },
+                {
+                    "NodeId": "St310.St310.310_000+S-K010.DataBlocksGlobal.OPC.St310PartsPlaced",
+                    "NodeDesiredValue": true,
+                    "NodeDataType": 1,
+                    "NodeCurrentValue": false
+                }
+            ],
+            "StepNo": 74,
+            "State": "Waiting"
+        },
+        {
+            "Description": "Press Start Press Program 1",
+            "NodesToSendValue": [
+                {
+                    "NodeId": "St310.St310.310_000+S-K010.DataBlocksGlobal.OPC.St310WorkOrderActive",
+                    "NodeDesiredValue": true,
+                    "NodeDataType": 1,
+                    "NodeCurrentValue": false
+                }
+            ],
+            "StepNo": 75,
+            "State": "Waiting"
+        },
+        {
+            "Description": "Press Program 1 Start",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "St310.St310.310_000+S-K010.DataBlocksGlobal.OPC.St310ProcessStatus",
+                    "NodeDesiredValue": 1,
+                    "NodeDataType": 3,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 76,
+            "State": "Waiting"
+        },
+        {
+            "Description": "Press Program 1 Complete",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "St310.St310.310_000+S-K010.DataBlocksGlobal.OPC.St310ProcessStatus",
+                    "NodeDesiredValue": 2,
+                    "NodeDataType": 3,
+                    "NodeCurrentValue": 0
+                },
+                {
+                    "NodeId": "St310.St310.310_000+S-K010.DataBlocksGlobal.OPC.St310DoorIsOpen",
+                    "NodeDesiredValue": true,
+                    "NodeDataType": 1,
+                    "NodeCurrentValue": false
+                },
+                {
+                    "NodeId": "St310.St310.310_000+S-K010.DataBlocksGlobal.OPC.St310PartResult",
+                    "NodeDesiredValue": "1",
+                    "NodeDataType": 3,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 77,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA Take Input Subassy from 310.3 and put on tray position",
+            "NodesToSendValue": [
+                {
+                    "NodeId": "ST300.MES.St300UnloadInputSubassy",
+                    "NodeDesiredValue": 1,
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 78,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA Part on location",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "ST300.MES.St300UnloadInputSubassy",
+                    "NodeDesiredValue": 2,
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 79,
+            "State": "Waiting"
+        },
+        {
+            "Description": "Press Close Press Door",
+            "NodesToSendValue": [
+                {
+                    "NodeId": "St310.St310.310_000+S-K010.DataBlocksGlobal.OPC.St310IIWAinNode4",
+                    "NodeDesiredValue": true,
+                    "NodeDataType": 1,
+                    "NodeCurrentValue": false
+                },
+                {
+                    "NodeId": "St310.St310.310_000+S-K010.DataBlocksGlobal.OPC.St310ProcessStatus",
+                    "NodeDesiredValue": 0,
+                    "NodeDataType": 3,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 80,
+            "State": "Waiting"
+        },
+        {
+            "Description": "Press READY",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "St310.St310.310_000+S-K010.DataBlocksGlobal.OPC.St310MachineState",
+                    "NodeDesiredValue": "4",
+                    "NodeDataType": 4,
+                    "NodeCurrentValue": 0
+                },
+                {
+                    "NodeId": "St310.St310.310_000+S-K010.DataBlocksGlobal.OPC.St310ProcessStatus",
+                    "NodeDesiredValue": 0,
+                    "NodeDataType": 3,
+                    "NodeCurrentValue": 0
+                },
+                {
+                    "NodeId": "St310.St310.310_000+S-K010.DataBlocksGlobal.OPC.St310DoorIsOpen",
+                    "NodeDesiredValue": false,
+                    "NodeDataType": 1,
+                    "NodeCurrentValue": false
+                },
+                {
+                    "NodeId": "St310.St310.310_000+S-K010.DataBlocksGlobal.OPC.St310WorkOrderActive",
+                    "NodeDesiredValue": false,
+                    "NodeDataType": 1,
+                    "NodeCurrentValue": false
+                }
+            ],
+            "StepNo": 81,
+            "State": "Waiting"
+        },
+        {
+            "Description": "Press READY",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "ST300.MES.St301CAM3Finished",
+                    "NodeDesiredValue": "1",
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 82,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA Go node 2 (CNC)",
+            "NodesToSendValue": [
+                {
+                    "NodeId": "ST300.MES.St300MoveNode2",
+                    "NodeDesiredValue": "1",
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 83,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA In node 2 (CNC) & Program Code #TransferGearCAM1 (#)",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "ST300.MES.St300MoveNode2",
+                    "NodeDesiredValue": "2",
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                },
+                {
+                    "NodeId": "ST300.MES.St301Status",
+                    "NodeDesiredValue": "1",
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                },
+                {
+                    "NodeId": "ST300.MES.St300ProgramJob7",
+                    "NodeDesiredValue": "2",
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 84,
+            "State": "Waiting"
+        },
+        {
+            "Description": "CNC READY",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "ST300.MES.St301Status",
+                    "NodeDesiredValue": "1",
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 85,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA Start Program Code #KnockKnock (#)",
+            "NodesToSendValue": [
+                {
+                    "NodeId": "ST300.MES.St300ProgramJob1",
+                    "NodeDesiredValue": "1",
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 86,
+            "State": "Waiting"
+        },
+        {
+            "Description": "Start Program Code #KnockKnock (#)",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "ST300.MES.St300ProgramJob1",
+                    "NodeDesiredValue": "2",
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 87,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA Start Program Code #KnockKnock (#)",
+            "NodesToSendValue": [
+                {
+                    "NodeId": "ST300.MES.St300ProgramJob8",
+                    "NodeDesiredValue": "1",
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 88,
+            "State": "Waiting"
+        },
+        {
+            "Description": "Start Program Code #KnockKnock (#)",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "ST300.MES.St300ProgramJob8",
+                    "NodeDesiredValue": "2",
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 89,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA Go node 3 (Laser)",
+            "NodesToSendValue": [
+                {
+                    "NodeId": "ST300.MES.St300MoveNode3",
+                    "NodeDesiredValue": "1",
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 90,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA In node 3 (Laser)",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "ST300.MES.St300MoveNode3",
+                    "NodeDesiredValue": "2",
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 91,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA In node 3 (Laser)",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "ST300.MES.St300MoveNode3",
+                    "NodeDesiredValue": "2",
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 92,
+            "State": "Waiting"
+        },
+        {
+            "Description": "Laser READY",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320MachineState",
+                    "NodeDesiredValue": "4",
+                    "NodeDataType": 4,
+                    "NodeCurrentValue": 0
+                },
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320ProcessStatus",
+                    "NodeDesiredValue": 0,
+                    "NodeDataType": 3,
+                    "NodeCurrentValue": 0
+                },
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320DoorIsOpen",
+                    "NodeDesiredValue": false,
+                    "NodeDataType": 1,
+                    "NodeCurrentValue": false
+                },
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320WorkOrderActive",
+                    "NodeDesiredValue": false,
+                    "NodeDataType": 1,
+                    "NodeCurrentValue": false
+                }
+            ],
+            "StepNo": 93,
+            "State": "Waiting"
+        },
+        {
+            "Description": "Laser Start Process",
+            "NodesToSendValue": [
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320WorkOrderNo",
+                    "NodeDesiredValue": "1000104.13",
+                    "NodeDataType": 12,
+                    "NodeCurrentValue": null
+                },
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320DMCSerialNo",
+                    "NodeDesiredValue": "2042-1072-001",
+                    "NodeDataType": 12,
+                    "NodeCurrentValue": null
+                },
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320ProductType",
+                    "NodeDesiredValue": 2,
+                    "NodeDataType": 4
+                },
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320IIWAinNode3",
+                    "NodeDesiredValue": true,
+                    "NodeDataType": 1,
+                    "NodeCurrentValue": false
+                }
+            ],
+            "StepNo": 94,
+            "State": "Waiting"
+        },
+        {
+            "Description": "Laser DoorIsOpen",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320DoorIsOpen",
+                    "NodeDesiredValue": true,
+                    "NodeDataType": 1,
+                    "NodeCurrentValue": false
+                }
+            ],
+            "StepNo": 95,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA Put transfer gear on fixture 320.2",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "ST300.MES.St300TransferEngravingLoad",
+                    "NodeDesiredValue": "1",
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 96,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA Part on location",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "ST300.MES.St300TransferEngravingLoad",
+                    "NodeDesiredValue": "2",
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                },
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320PartsPlaced",
+                    "NodeDesiredValue": true,
+                    "NodeDataType": 1,
+                    "NodeCurrentValue": false
+                }
+            ],
+            "StepNo": 97,
+            "State": "Waiting"
+        },
+        {
+            "Description": "Laser Start Program",
+            "NodesToSendValue": [
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320WorkOrderActive",
+                    "NodeDesiredValue": true,
+                    "NodeDataType": 1,
+                    "NodeCurrentValue": false
+                }
+            ],
+            "StepNo": 98,
+            "State": "Waiting"
+        },
+        {
+            "Description": "Laser Process Started",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320ProcessStatus",
+                    "NodeDesiredValue": 4,
+                    "NodeDataType": 3,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 99,
+            "State": "Waiting"
+        },
+        {
+            "Description": "Laser Finish Process",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320ProcessStatus",
+                    "NodeDesiredValue": 8,
+                    "NodeDataType": 3,
+                    "NodeCurrentValue": 0
+                },
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320PartResult",
+                    "NodeDesiredValue": "1",
+                    "NodeDataType": 3,
+                    "NodeCurrentValue": 0
+                },
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320DoorIsOpen",
+                    "NodeDesiredValue": true,
+                    "NodeDataType": 1,
+                    "NodeCurrentValue": false
+                }
+            ],
+            "StepNo": 100,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA Take transfer gear from fixture 320.2 and put on tray",
+            "NodesToSendValue": [
+                {
+                    "NodeId": "ST300.MES.St300UnloadTransferGear",
+                    "NodeDesiredValue": 1,
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 101,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA On position",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "ST300.MES.St300UnloadTransferGear",
+                    "NodeDesiredValue": 2,
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 102,
+            "State": "Waiting"
+        },
+        {
+            "Description": "Close Laser Door",
+            "NodesToSendValue": [
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320IIWAinNode3",
+                    "NodeDesiredValue": false,
+                    "NodeDataType": 1,
+                    "NodeCurrentValue": false
+                },
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320ProcessStatus",
+                    "NodeDesiredValue": 0,
+                    "NodeDataType": 3,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 103,
+            "State": "Succeed"
+        },
+        {
+            "Description": "Laser Door Closed",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320DoorIsOpen",
+                    "NodeDesiredValue": false,
+                    "NodeDataType": 1,
+                    "NodeCurrentValue": false
+                }
+            ],
+            "StepNo": 104,
+            "State": "Succeed"
+        },
+        {
+            "Description": "Laser READY",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320MachineState",
+                    "NodeDesiredValue": "4",
+                    "NodeDataType": 4,
+                    "NodeCurrentValue": 0
+                },
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320ProcessStatus",
+                    "NodeDesiredValue": 0,
+                    "NodeDataType": 3,
+                    "NodeCurrentValue": 0
+                },
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320DoorIsOpen",
+                    "NodeDesiredValue": false,
+                    "NodeDataType": 1,
+                    "NodeCurrentValue": false
+                },
+                {
+                    "NodeId": "St320.St320.320_000+S-K010.DataBlocksGlobal.OPC.St320WorkOrderActive",
+                    "NodeDesiredValue": false,
+                    "NodeDataType": 1,
+                    "NodeCurrentValue": false
+                }
+            ],
+            "StepNo": 105,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA Go node 4 (press)",
+            "NodesToSendValue": [
+                {
+                    "NodeId": "ST300.MES.St300MoveNode4",
+                    "NodeDesiredValue": 1,
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 106,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA In node 4 (press)",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "ST300.MES.St300MoveNode4",
+                    "NodeDesiredValue": 2,
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 107,
+            "State": "Waiting"
+        },
+        {
+            "Description": "Press READY",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "St310.St310.310_000+S-K010.DataBlocksGlobal.OPC.St310MachineState",
+                    "NodeDesiredValue": "4",
+                    "NodeDataType": 4,
+                    "NodeCurrentValue": 0
+                },
+                {
+                    "NodeId": "St310.St310.310_000+S-K010.DataBlocksGlobal.OPC.St310ProcessStatus",
+                    "NodeDesiredValue": 0,
+                    "NodeDataType": 3,
+                    "NodeCurrentValue": 0
+                },
+                {
+                    "NodeId": "St310.St310.310_000+S-K010.DataBlocksGlobal.OPC.St310DoorIsOpen",
+                    "NodeDesiredValue": false,
+                    "NodeDataType": 1,
+                    "NodeCurrentValue": false
+                },
+                {
+                    "NodeId": "St310.St310.310_000+S-K010.DataBlocksGlobal.OPC.St310WorkOrderActive",
+                    "NodeDesiredValue": false,
+                    "NodeDataType": 1,
+                    "NodeCurrentValue": false
+                }
+            ],
+            "StepNo": 108,
+            "State": "Waiting"
+        },
+        {
+            "Description": "Press Start Process",
+            "NodesToSendValue": [
+                {
+                    "NodeId": "St310.St310.310_000+S-K010.DataBlocksGlobal.OPC.St310WorkOrderNo",
+                    "NodeDesiredValue": "1000104.13",
+                    "NodeDataType": 12,
+                    "NodeCurrentValue": null
+                },
+                {
+                    "NodeId": "St310.St310.310_000+S-K010.DataBlocksGlobal.OPC.St310ProductType",
+                    "NodeDesiredValue": 2,
+                    "NodeDataType": 4
+                },
+                {
+                    "NodeId": "St310.St310.310_000+S-K010.DataBlocksGlobal.OPC.St310IIWAinNode4",
+                    "NodeDesiredValue": true,
+                    "NodeDataType": 1,
+                    "NodeCurrentValue": false
+                }
+            ],
+            "StepNo": 109,
+            "State": "Waiting"
+        },
+        {
+            "Description": "Press Door Opened",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "St310.St310.310_000+S-K010.DataBlocksGlobal.OPC.St310DoorIsOpen",
+                    "NodeDesiredValue": true,
+                    "NodeDataType": 1,
+                    "NodeCurrentValue": false
+                }
+            ],
+            "StepNo": 110,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA Put bearing 32205 (B1) to 310.3, transfer gear on fixture 310.3, 30304 (B2) to 310.2 and transfer shaft to 310.1",
+            "NodesToSendValue": [
+                {
+                    "NodeId": "ST300.MES.St300LoadTransferSubAssyPart",
+                    "NodeDesiredValue": "1",
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 111,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA Part on location & Parts placed on true places to start the operation",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "ST300.MES.St300LoadTransferSubAssyPart",
+                    "NodeDesiredValue": "2",
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                },
+                {
+                    "NodeId": "St310.St310.310_000+S-K010.DataBlocksGlobal.OPC.St310PartsPlaced",
+                    "NodeDesiredValue": true,
+                    "NodeDataType": 1,
+                    "NodeCurrentValue": false
+                }
+            ],
+            "StepNo": 112,
+            "State": "Waiting"
+        },
+        {
+            "Description": "Press Start Press Program 1",
+            "NodesToSendValue": [
+                {
+                    "NodeId": "St310.St310.310_000+S-K010.DataBlocksGlobal.OPC.St310WorkOrderActive",
+                    "NodeDesiredValue": true,
+                    "NodeDataType": 1,
+                    "NodeCurrentValue": false
+                }
+            ],
+            "StepNo": 113,
+            "State": "Waiting"
+        },
+        {
+            "Description": "Press Program 1 Start",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "St310.St310.310_000+S-K010.DataBlocksGlobal.OPC.St310ProcessStatus",
+                    "NodeDesiredValue": 4,
+                    "NodeDataType": 3,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 114,
+            "State": "Waiting"
+        },
+        {
+            "Description": "Press Program 1 Complete",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "St310.St310.310_000+S-K010.DataBlocksGlobal.OPC.St310ProcessStatus",
+                    "NodeDesiredValue": 8,
+                    "NodeDataType": 3,
+                    "NodeCurrentValue": 0
+                },
+                {
+                    "NodeId": "St310.St310.310_000+S-K010.DataBlocksGlobal.OPC.St310DoorIsOpen",
+                    "NodeDesiredValue": true,
+                    "NodeDataType": 1,
+                    "NodeCurrentValue": false
+                },
+                {
+                    "NodeId": "St310.St310.310_000+S-K010.DataBlocksGlobal.OPC.St310PartResult",
+                    "NodeDesiredValue": "1",
+                    "NodeDataType": 3,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 115,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA Take Transfer Subassy from 310.3 and put on tray position",
+            "NodesToSendValue": [
+                {
+                    "NodeId": "ST300.MES.St300UnloadTransferSubassy",
+                    "NodeDesiredValue": 1,
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 116,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA Part on location",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "ST300.MES.St300UnloadTransferSubassy",
+                    "NodeDesiredValue": 2,
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 117,
+            "State": "Waiting"
+        },
+        {
+            "Description": "Press Close Press Door",
+            "NodesToSendValue": [
+                {
+                    "NodeId": "St310.St310.310_000+S-K010.DataBlocksGlobal.OPC.St310IIWAinNode4",
+                    "NodeDesiredValue": true,
+                    "NodeDataType": 1,
+                    "NodeCurrentValue": false
+                },
+                {
+                    "NodeId": "St310.St310.310_000+S-K010.DataBlocksGlobal.OPC.St310ProcessStatus",
+                    "NodeDesiredValue": 0,
+                    "NodeDataType": 3,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 118,
+            "State": "Waiting"
+        },
+        {
+            "Description": "Press READY",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "St310.St310.310_000+S-K010.DataBlocksGlobal.OPC.St310MachineState",
+                    "NodeDesiredValue": "4",
+                    "NodeDataType": 4,
+                    "NodeCurrentValue": 0
+                },
+                {
+                    "NodeId": "St310.St310.310_000+S-K010.DataBlocksGlobal.OPC.St310ProcessStatus",
+                    "NodeDesiredValue": 0,
+                    "NodeDataType": 3,
+                    "NodeCurrentValue": 0
+                },
+                {
+                    "NodeId": "St310.St310.310_000+S-K010.DataBlocksGlobal.OPC.St310DoorIsOpen",
+                    "NodeDesiredValue": false,
+                    "NodeDataType": 1,
+                    "NodeCurrentValue": false
+                },
+                {
+                    "NodeId": "St310.St310.310_000+S-K010.DataBlocksGlobal.OPC.St310WorkOrderActive",
+                    "NodeDesiredValue": false,
+                    "NodeDataType": 1,
+                    "NodeCurrentValue": false
+                }
+            ],
+            "StepNo": 119,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA Go node 5 (WP1)",
+            "NodesToSendValue": [
+                {
+                    "NodeId": "ST300.MES.St300MoveNode5",
+                    "NodeDesiredValue": 1,
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 120,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA In node 5 (WP1)",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "ST300.MES.St300MoveNode5",
+                    "NodeDesiredValue": 2,
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 121,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA Locate subassys to buffer zone",
+            "NodesToSendValue": [
+                {
+                    "NodeId": "ST300.MES.St300LoadJig",
+                    "NodeDesiredValue": 1,
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 122,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA Subassys are in buffer zone",
+            "NodesToCheckValue": [
+                {
+                    "NodeId": "ST300.MES.St300LoadJig",
+                    "NodeDesiredValue": 2,
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 123,
+            "State": "Waiting"
+        },
+        {
+            "Description": "IIWA Locate subassys to buffer zone",
+            "NodesToSendValue": [
+                {
+                    "NodeId": "ST300.MES.St300MoveNode6",
+                    "NodeDesiredValue": 1,
+                    "NodeDataType": 6,
+                    "NodeCurrentValue": 0
+                }
+            ],
+            "StepNo": 124,
+            "State": "Waiting"
+        }
+    ]
+}

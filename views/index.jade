@@ -30,7 +30,7 @@ block content
 
     each step in steps
       div(data-step=step.StepNo class=step.NodesToSendValue ? 'action' : '').bullet.waiting
-        p= step.Description
+        p.description= step.Description
         ul
           -if(step.NodesToCheckValue)
             ul

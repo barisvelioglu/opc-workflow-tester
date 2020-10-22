@@ -21,6 +21,11 @@ var port              = 3000;
 var currentSteps      = undefined
 var currentTestDb     = undefined;
 
+var stepCounter = 1;
+steps.forEach(s => {
+  s.StepNo = stepCounter++;
+});
+
 console.log("--- steps ---");
 console.log(steps);
 

@@ -2,8 +2,8 @@ const { DataType } = require("node-opcua");
 
 module.exports = [
     {
-        StepNo : 1,
-        Description : "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        
+        Description : "IIWA READY",
         NodesToCheckValue : [
             {
                 NodeId : "ST300.MES.St300MachineStatus",
@@ -12,8 +12,8 @@ module.exports = [
         ]
     },
     {
-        StepNo : 2,
-        Description : "Nulla blandit aliquet tristique. Sed nulla dui, volutpat id efficitur vulputate, egestas id mauris",
+        
+        Description : "IIWA GO CNC buffer area",
         NodesToSendValue : [
             {
                 NodeId : "ST300.MES.St300WorkOrder",
@@ -33,8 +33,8 @@ module.exports = [
         ]
     },
     {
-        StepNo : 3,
-        Description : "Aenean bibendum rhoncus nibh quis euismod",
+        
+        Description : "IIWA In node 1",
         NodesToCheckValue : [
             {
                 NodeId : "ST300.MES.St300MoveNode1",
@@ -43,8 +43,8 @@ module.exports = [
         ]
     },
     {
-        StepNo : 4,
-        Description : "Proin et tellus a mi lobortis suscipit",
+        
+        Description : "IIWA Take blank input shaft from line 1.1 and put on tray.30304 from line 2.1, 32205 from line 3.1 and 3.2, transfer shaft from 4.1 and tranfer gear from 5.1 and put on tray",
         NodesToSendValue : [
             {
                 NodeId : "ST300.MES.St300CollectParts",
@@ -84,8 +84,8 @@ module.exports = [
         ]
     },
     {
-        StepNo : 5,
-        Description : "Proin et tellus a mi lobortis suscipit",
+        
+        Description : "IIWA Parts on tray",
         NodesToCheckValue : [
             {
                 NodeId : "ST300.MES.St300CollectParts",
@@ -118,8 +118,8 @@ module.exports = [
         ]
     },
     {
-        StepNo : 6,
-        Description : "Proin et tellus a mi lobortis suscipit",
+        
+        Description : "IIWA Go node 2 (CNC)",
         NodesToSendValue : [
             {
                 NodeId : "ST300.MES.St300MoveNode2",
@@ -129,8 +129,8 @@ module.exports = [
         ]
     },
     {
-        StepNo : 7,
-        Description : "Proin et tellus a mi lobortis suscipit",
+        
+        Description : "IIWA In node 2 (CNC) & CNC READY",
         NodesToCheckValue : [
             {
                 NodeId : "ST300.MES.St300MoveNode2",
@@ -145,8 +145,8 @@ module.exports = [
         ]
     },
     {
-        StepNo : 8,
-        Description : "Proin et tellus a mi lobortis suscipit",
+        
+        Description : "IIWA Start Program Code #KnockKnock (#)",
         NodesToSendValue : [
             {
                 NodeId : "ST300.MES.St300ProgramJob1",
@@ -156,8 +156,8 @@ module.exports = [
         ]
     },
     {
-        StepNo : 9,
-        Description : "Proin et tellus a mi lobortis suscipit",
+        
+        Description : "IIWA Program Code #KnockKnock (#)",
         NodesToCheckValue : [
             {
                 NodeId : "ST300.MES.St300ProgramJob1",
@@ -167,8 +167,8 @@ module.exports = [
         ]
     },
     {
-        StepNo : 10,
-        Description : "Proin et tellus a mi lobortis suscipit",
+        
+        Description : "IIWA Start Program Code #LoadLeftSide (#)",
         NodesToSendValue : [
             {
                 NodeId : "ST300.MES.St300ProgramJob2",
@@ -178,8 +178,8 @@ module.exports = [
         ]
     },
     {
-        StepNo : 11,
-        Description : "Proin et tellus a mi lobortis suscipit",
+        
+        Description : "IIWA Start Program Code #LoadLeftSide (#)",
         NodesToCheckValue : [
             {
                 NodeId : "ST300.MES.St300ProgramJob2",
@@ -189,8 +189,8 @@ module.exports = [
         ]
     },
     {
-        StepNo : 12,
-        Description : "Proin et tellus a mi lobortis suscipit",
+        
+        Description : "IIWA Start Program Code #InputShaftCAM1 (#)",
         NodesToSendValue : [
             {
                 NodeId : "ST300.MES.St300ProgramJob3",
@@ -200,14 +200,26 @@ module.exports = [
         ]
     },
     {
-        StepNo : 13,
-        Description : "Proin et tellus a mi lobortis suscipit",
+        
+        Description : "IIWA CAM 1 Program Started",
         NodesToCheckValue : [
             {
                 NodeId : "ST300.MES.St300ProgramJob3",
                 NodeDesiredValue : "2",
                 NodeDataType : DataType.Int32
             },            
+            {
+                NodeId : "ST300.MES.St301InputCAM1",
+                NodeDesiredValue : "2",
+                NodeDataType : DataType.Int32
+            },
+        ]
+    },
+
+    {
+        
+        Description : "IIWA CAM 1 Program Started",
+        NodesToCheckValue : [
             {
                 NodeId : "ST300.MES.St301InputCAM1",
                 NodeDesiredValue : "3",
@@ -217,8 +229,8 @@ module.exports = [
     },
     //34.satıra kadar ki kısım
     {
-        StepNo : 14,
-        Description : "Proin et tellus a mi lobortis suscipit",
+        
+        Description : "IIWA Start Program Code #KnockKnock (#)",
         NodesToSendValue : [
             {
                 NodeId : "ST300.MES.St300ProgramJob1",
@@ -228,8 +240,8 @@ module.exports = [
         ]
     },
     {
-        StepNo : 15,
-        Description : "Proin et tellus a mi lobortis suscipit",
+        
+        Description : "IIWA Program Code #KnockKnock (#)",
         NodesToCheckValue : [
             {
                 NodeId : "ST300.MES.St300ProgramJob1",
@@ -239,8 +251,8 @@ module.exports = [
         ]
     },
     {
-        StepNo : 16,
-        Description : "Proin et tellus a mi lobortis suscipit",
+        
+        Description : "IIWA Start Program Code #Turn&Load (#)",
         NodesToSendValue : [
             {
                 NodeId : "ST300.MES.St300ProgramJob4",
@@ -250,30 +262,8 @@ module.exports = [
         ]
     },
     {
-        StepNo : 17,
-        Description : "Proin et tellus a mi lobortis suscipit",
-        NodesToCheckValue : [
-            {
-                NodeId : "ST300.MES.St300ProgramJob4",
-                NodeDesiredValue : "2",
-                NodeDataType : DataType.Int32
-            }
-        ]
-    },    
-    {
-        StepNo : 18,
-        Description : "Proin et tellus a mi lobortis suscipit",
-        NodesToSendValue : [
-            {
-                NodeId : "ST300.MES.St300ProgramJob4",
-                NodeDesiredValue : "1",
-                NodeDataType : DataType.Int32
-            },
-        ]
-    },
-    {
-        StepNo : 19,
-        Description : "Proin et tellus a mi lobortis suscipit",
+        
+        Description : "IIWA In node 2 (CNC) & Program Code #Turn&Load (#)",
         NodesToCheckValue : [
             {
                 NodeId : "ST300.MES.St300MoveNode2",
@@ -288,8 +278,8 @@ module.exports = [
         ]
     },
     {
-        StepNo : 20,
-        Description : "Proin et tellus a mi lobortis suscipit",
+        
+        Description : "IIWA Start Program Code #InputShaftCAM2 (#)",
         NodesToSendValue : [
             {
                 NodeId : "ST300.MES.St300ProgramJob5",
@@ -299,8 +289,8 @@ module.exports = [
         ]
     },
     {
-        StepNo : 21,
-        Description : "Proin et tellus a mi lobortis suscipit",
+        
+        Description : "CNC CAM 2 Program Started",
         NodesToCheckValue : [
             {
                 NodeId : "ST300.MES.St301InputCAM2",
@@ -310,8 +300,8 @@ module.exports = [
         ]
     },  
     {
-        StepNo : 22,
-        Description : "Proin et tellus a mi lobortis suscipit",
+        
+        Description : "IIWA Go node 3 (Laser)",
         NodesToSendValue : [
             {
                 NodeId : "ST300.MES.St300MoveNode3",
@@ -321,8 +311,8 @@ module.exports = [
         ]
     },
     {
-        StepNo : 23,
-        Description : "Proin et tellus a mi lobortis suscipit",
+        
+        Description : "IIWA In node 3 (Laser)",
         NodesToCheckValue : [
             {
                 NodeId : "ST300.MES.St300MoveNode3",
@@ -332,8 +322,8 @@ module.exports = [
         ]
     },
     {
-        StepNo : 24,
-        Description : "Proin et tellus a mi lobortis suscipit",
+        
+        Description : "IIWA Take Transfer shaft from tray",
         NodesToSendValue : [
             {
                 NodeId : "ST300.MES.St300PickTransferShaft",
@@ -343,8 +333,8 @@ module.exports = [
         ]
     },
     {
-        StepNo : 25,
-        Description : "Proin et tellus a mi lobortis suscipit",
+        
+        Description : "IIWA Part taken",
         NodesToCheckValue : [
             {
                 NodeId : "ST300.MES.St300PickTransferShaft",
@@ -374,7 +364,7 @@ module.exports = [
     },
   
     {
-        StepNo : 26,
+        
         Description : "Laser Start Process",
         NodesToSendValue : [
             {
@@ -395,7 +385,7 @@ module.exports = [
         ]
     },
     {
-        StepNo : 27,
+        
         Description : "Laser DoorIsOpen",
         NodesToCheckValue : [
             {
@@ -407,7 +397,7 @@ module.exports = [
     },
 
     {
-        StepNo : 28,
+        
         Description : "IIWA Locate transfer shaft under camera area",
         NodesToSendValue : [
             {
@@ -418,7 +408,7 @@ module.exports = [
         ]
     },
     {
-        StepNo : 29,
+        
         Description : "IIWA In Position, Parts placed on true places to start the operation",
         NodesToCheckValue : [
             {
@@ -436,7 +426,7 @@ module.exports = [
 
 
     {
-        StepNo : 30,
+        
         Description : "Laser IIWAInReadPosition",
         NodesToSendValue : [
             {
@@ -447,7 +437,7 @@ module.exports = [
         ]
     },
     {
-        StepNo : 31,
+        
         Description : "IIWA In Position, Parts placed on true places to start the operation",
         NodesToCheckValue : [
             {
@@ -458,7 +448,7 @@ module.exports = [
         ]
     },
     {
-        StepNo : 32,
+        
         Description : "IIWA In Position, Parts placed on true places to start the operation",
         NodesToCheckValue : [
             {
@@ -480,7 +470,7 @@ module.exports = [
     },
 
     {
-        StepNo : 33,
+        
         Description : "IIWA Put transfer shaft on tray",
         NodesToSendValue : [
             {
@@ -491,7 +481,7 @@ module.exports = [
         ]
     },
     {
-        StepNo : 34,
+        
         Description : "IIWA Part on tray",
         NodesToCheckValue : [
             {
@@ -503,7 +493,7 @@ module.exports = [
     },
 
     {
-        StepNo : 35,
+        
         Description : "Laser IIWA Leave the zone",
         NodesToSendValue : [
             {
@@ -519,7 +509,7 @@ module.exports = [
         ]
     },
     {
-        StepNo : 36,
+        
         Description : "Laser READY",
         NodesToCheckValue : [
             {
@@ -546,7 +536,7 @@ module.exports = [
 
 
     {
-        StepNo : 37,
+        
         Description : "IIWA Go node 2 (CNC)",
         NodesToSendValue : [
             {
@@ -557,7 +547,7 @@ module.exports = [
         ]
     },
     {
-        StepNo : 38,
+        
         Description : "IIWA In node 2 (CNC)",
         NodesToCheckValue : [
             {
@@ -570,7 +560,7 @@ module.exports = [
 
     
     {
-        StepNo : 39,
+        
         Description : "CNC CAM 2 Program finished",
         NodesToCheckValue : [
             {
@@ -582,7 +572,7 @@ module.exports = [
     },
 
     {
-        StepNo : 40,
+        
         Description : "IIWA Program Code #InputShaftCAM2 (#) //St300ProgramJob10=2",
         NodesToCheckValue : [
             {
@@ -599,7 +589,7 @@ module.exports = [
     },
 
     {
-        StepNo : 41,
+        
         Description : "IIWA Start Program Code #KnockKnock (#)",
         NodesToSendValue : [
             {
@@ -611,7 +601,7 @@ module.exports = [
     },
 
     {
-        StepNo : 42,
+        
         Description : "IIWA Program Code #KnockKnock (#)",
         NodesToCheckValue : [
             {
@@ -623,7 +613,7 @@ module.exports = [
     },
 
     {
-        StepNo : 43,
+        
         Description : "IIWA Start Program Code #UnloadtheLeft (#)",
         NodesToSendValue : [
             {
@@ -635,7 +625,7 @@ module.exports = [
     },
 
     {
-        StepNo : 44,
+        
         Description : "IIWA Program Code #UnloadtheLeft (#)",
         NodesToCheckValue : [
             {
@@ -647,7 +637,7 @@ module.exports = [
     },
 
     {
-        StepNo : 45,
+        
         Description : "IIWA Start Program Code #LoadLeftSide (#)",
         NodesToSendValue : [
             {
@@ -659,7 +649,7 @@ module.exports = [
     },
 
     {
-        StepNo : 46,
+        
         Description : "IIWA Program Code #UnloadtheLeft (#)",
         NodesToCheckValue : [
             {
@@ -671,7 +661,7 @@ module.exports = [
     },
 
     {
-        StepNo : 47,
+        
         Description : "IIWA Start Program Code #TransferGearCAM1 (#)",
         NodesToSendValue : [
             {
@@ -683,7 +673,7 @@ module.exports = [
     },
 
     {
-        StepNo : 48,
+        
         Description : "IIWA Program Code #UnloadtheLeft (#)",
         NodesToCheckValue : [
             {
@@ -696,7 +686,7 @@ module.exports = [
 
 
     {
-        StepNo : 49,
+        
         Description : "IIWA Go node 3 (Laser)",
         NodesToSendValue : [
             {
@@ -708,7 +698,7 @@ module.exports = [
     },
 
     {
-        StepNo : 50,
+        
         Description : "IIWA In node 3 (Laser)",
         NodesToCheckValue : [
             {
@@ -720,7 +710,7 @@ module.exports = [
     },
 
     {
-        StepNo : 51,
+        
         Description : "IIWA Go node 3 (Laser)",
         NodesToSendValue : [
             {
@@ -732,7 +722,7 @@ module.exports = [
     },
 
     {
-        StepNo : 52,
+        
         Description : "IIWA In node 3 (Laser)",
         NodesToCheckValue : [
             {
@@ -745,7 +735,7 @@ module.exports = [
 
     
     {
-        StepNo : 53,
+        
         Description : "Laser READY",
         NodesToCheckValue : [
             {
@@ -772,7 +762,7 @@ module.exports = [
 
 
     {
-        StepNo : 54,
+        
         Description : "Laser Start Process",
         NodesToSendValue : [
             {
@@ -799,7 +789,7 @@ module.exports = [
     },
 
     {
-        StepNo : 55,
+        
         Description : "Laser Door Opened",
         NodesToCheckValue : [
             {
@@ -811,7 +801,7 @@ module.exports = [
     },
 
     {
-        StepNo : 56,
+        
         Description : "IIWA Put input shaft on fixture 320.1",
         NodesToSendValue : [
             {
@@ -823,7 +813,7 @@ module.exports = [
     },
 
     {
-        StepNo : 57,
+        
         Description : "IIWA Part on location",
         NodesToCheckValue : [
             {
@@ -841,7 +831,7 @@ module.exports = [
 
 
     {
-        StepNo : 58,
+        
         Description : "Laser Start Program",
         NodesToSendValue : [
             {
@@ -853,7 +843,7 @@ module.exports = [
     },
 
     {
-        StepNo : 59,
+        
         Description : "Laser Start Process",
         NodesToCheckValue : [
             {
@@ -865,7 +855,7 @@ module.exports = [
     },
 
     {
-        StepNo : 60,
+        
         Description : "Laser Finish Process",
         NodesToCheckValue : [
             {
@@ -887,7 +877,7 @@ module.exports = [
     },
 
     {
-        StepNo : 61,
+        
         Description : "IIWA Take input shaft from fixture 320.1 and put on tray",
         NodesToSendValue : [
             {
@@ -899,7 +889,7 @@ module.exports = [
     },
 
     {
-        StepNo : 62,
+        
         Description : "IIWA On position",
         NodesToCheckValue : [
             {
@@ -912,7 +902,7 @@ module.exports = [
 
 
     {
-        StepNo : 63,
+        
         Description : "Laser Close Door",
         NodesToSendValue : [
             {
@@ -930,7 +920,7 @@ module.exports = [
 
 
     {
-        StepNo : 64,
+        
         Description : "Laser Door Closed",
         NodesToCheckValue : [
             {
@@ -942,7 +932,7 @@ module.exports = [
     },
 
     {
-        StepNo : 65,
+        
         Description : "Laser READY",
         NodesToCheckValue : [
             {
@@ -969,7 +959,7 @@ module.exports = [
 
 
     {
-        StepNo : 66,
+        
         Description : "IIWA Go node 4 (press)",
         NodesToSendValue : [
             {
@@ -981,7 +971,7 @@ module.exports = [
     },
 
     {
-        StepNo : 67,
+        
         Description : "IIWA In node 4 (press)",
         NodesToCheckValue : [
             {
@@ -993,7 +983,7 @@ module.exports = [
     },
 
     {
-        StepNo : 68,
+        
         Description : "Press READY",
         NodesToCheckValue : [
             {
@@ -1021,7 +1011,7 @@ module.exports = [
 
 
     {
-        StepNo : 69,
+        
         Description : "Press Start Process",
         NodesToSendValue : [
             {
@@ -1043,7 +1033,7 @@ module.exports = [
     },
 
     {
-        StepNo : 70,
+        
         Description : "Press Door Opened",
         NodesToCheckValue : [
             {
@@ -1056,7 +1046,7 @@ module.exports = [
 
 
     {
-        StepNo : 71,
+        
         Description : "IIWA Put input shaft on fixture 310.1, 30304 to 310.2 and 32205 to 310.3",
         NodesToSendValue : [
             {
@@ -1068,7 +1058,7 @@ module.exports = [
     },
 
     {
-        StepNo : 72,
+        
         Description : "IIWA Part on location",
         NodesToCheckValue : [
             {
@@ -1080,7 +1070,7 @@ module.exports = [
     },
 
     {
-        StepNo : 73,
+        
         Description : "IIWA Part on location",
         NodesToCheckValue : [
             {
@@ -1098,7 +1088,7 @@ module.exports = [
 
 
     {
-        StepNo : 74,
+        
         Description : "Press Start Press Program 1",
         NodesToSendValue : [
             {
@@ -1110,7 +1100,7 @@ module.exports = [
     },
 
     {
-        StepNo : 75,
+        
         Description : "Press Program 1 Start",
         NodesToCheckValue : [
             {
@@ -1122,7 +1112,7 @@ module.exports = [
     },
 
     {
-        StepNo : 76,
+        
         Description : "Press Program 1 Complete",
         NodesToCheckValue : [
             {
@@ -1144,7 +1134,7 @@ module.exports = [
     },
 
     {
-        StepNo : 77,
+        
         Description : "IIWA Take Input Subassy from 310.3 and put on tray position",
         NodesToSendValue : [
             {
@@ -1156,7 +1146,7 @@ module.exports = [
     },
 
     {
-        StepNo : 78,
+        
         Description : "IIWA Part on location",
         NodesToCheckValue : [
             {
@@ -1168,7 +1158,7 @@ module.exports = [
     },
 
     {
-        StepNo : 79,
+        
         Description : "Press Close Press Door",
         NodesToSendValue : [ 
             {
@@ -1185,7 +1175,7 @@ module.exports = [
     },
 
     {
-        StepNo : 80,
+        
         Description : "Press READY",
         NodesToCheckValue : [
             {
@@ -1212,7 +1202,7 @@ module.exports = [
     },
 
     {
-        StepNo : 81,
+        
         Description : "Press READY",
         NodesToCheckValue : [
             {
@@ -1224,7 +1214,7 @@ module.exports = [
     },
 
     {
-        StepNo : 82,
+        
         Description : "IIWA Go node 2 (CNC)",
         NodesToSendValue : [
             {
@@ -1235,7 +1225,7 @@ module.exports = [
         ]
     },
     {
-        StepNo : 83,
+        
         Description : "IIWA In node 2 (CNC) & Program Code #TransferGearCAM1 (#)",
         NodesToCheckValue : [
             {
@@ -1256,7 +1246,7 @@ module.exports = [
         ]
     },
     {
-        StepNo : 84,
+        
         Description : "CNC READY",
         NodesToCheckValue : [          
             {
@@ -1268,7 +1258,7 @@ module.exports = [
     },
 
     {
-        StepNo : 85,
+        
         Description : "IIWA Start Program Code #KnockKnock (#)",
         NodesToSendValue : [
             {
@@ -1279,7 +1269,7 @@ module.exports = [
         ]
     },
     {
-        StepNo : 86,
+        
         Description : "Start Program Code #KnockKnock (#)",
         NodesToCheckValue : [
             {
@@ -1291,7 +1281,7 @@ module.exports = [
     },
 
     {
-        StepNo : 87,
+        
         Description : "IIWA Start Program Code #KnockKnock (#)",
         NodesToSendValue : [
             {
@@ -1302,7 +1292,7 @@ module.exports = [
         ]
     },
     {
-        StepNo : 88,
+        
         Description : "Start Program Code #KnockKnock (#)",
         NodesToCheckValue : [
             {
@@ -1314,7 +1304,7 @@ module.exports = [
     },
 
     {
-        StepNo : 89,
+        
         Description : "IIWA Go node 3 (Laser)",
         NodesToSendValue : [
             {
@@ -1325,7 +1315,7 @@ module.exports = [
         ]
     },
     {
-        StepNo : 90,
+        
         Description : "IIWA In node 3 (Laser)",
         NodesToCheckValue : [
             {
@@ -1337,7 +1327,7 @@ module.exports = [
     },
 
     {
-        StepNo : 91,
+        
         Description : "IIWA In node 3 (Laser)",
         NodesToCheckValue : [
             {
@@ -1349,7 +1339,7 @@ module.exports = [
     },
 
     {
-        StepNo : 92,
+        
         Description : "Laser READY",
         NodesToCheckValue : [
             {
@@ -1375,7 +1365,7 @@ module.exports = [
     },
 
     {
-        StepNo : 93,
+        
         Description : "Laser Start Process",
         NodesToSendValue : [
             {
@@ -1402,7 +1392,7 @@ module.exports = [
     },
 
     {
-        StepNo : 94,
+        
         Description : "Laser DoorIsOpen",
         NodesToCheckValue : [
             {
@@ -1414,7 +1404,7 @@ module.exports = [
     },
 
     {
-        StepNo : 95,
+        
         Description : "IIWA Put transfer gear on fixture 320.2",
         NodesToCheckValue : [
             {
@@ -1426,7 +1416,7 @@ module.exports = [
     },
 
     {
-        StepNo : 96,
+        
         Description : "IIWA Part on location",
         NodesToCheckValue : [
             {
@@ -1444,7 +1434,7 @@ module.exports = [
 
     
     {
-        StepNo : 97,
+        
         Description : "Laser Start Program",
         NodesToSendValue : [
             {
@@ -1456,7 +1446,7 @@ module.exports = [
     },
 
     {
-        StepNo : 98,
+        
         Description : "Laser Process Started",
         NodesToCheckValue : [
             {
@@ -1468,7 +1458,7 @@ module.exports = [
     },
 
     {
-        StepNo : 99,
+        
         Description : "Laser Finish Process",
         NodesToCheckValue : [
             {
@@ -1490,7 +1480,7 @@ module.exports = [
     },
 
     {
-        StepNo : 100,
+        
         Description : "IIWA Take transfer gear from fixture 320.2 and put on tray",
         NodesToSendValue : [
             {
@@ -1502,7 +1492,7 @@ module.exports = [
     },
 
     {
-        StepNo : 101,
+        
         Description : "IIWA On position",
         NodesToCheckValue : [
             {
@@ -1514,7 +1504,7 @@ module.exports = [
     },
 
     {
-        StepNo : 102,
+        
         Description : "Close Laser Door",
         NodesToSendValue : [
             {
@@ -1531,7 +1521,7 @@ module.exports = [
     },
 
     {
-        StepNo : 103,
+        
         Description : "Laser Door Closed",
         NodesToCheckValue : [
             {
@@ -1543,7 +1533,7 @@ module.exports = [
     },
 
     {
-        StepNo : 104,
+        
         Description : "Laser READY",
         NodesToCheckValue : [
             {
@@ -1569,7 +1559,7 @@ module.exports = [
     },
 
     {
-        StepNo : 104,
+        
         Description : "IIWA Go node 4 (press)",
         NodesToSendValue : [
             {
@@ -1581,7 +1571,7 @@ module.exports = [
     },
 
     {
-        StepNo : 105,
+        
         Description : "IIWA In node 4 (press)",
         NodesToCheckValue : [
             {
@@ -1593,7 +1583,7 @@ module.exports = [
     },
 
     {
-        StepNo : 106,
+        
         Description : "Press READY",
         NodesToCheckValue : [
             {
@@ -1621,7 +1611,7 @@ module.exports = [
 
 
     {
-        StepNo : 107,
+        
         Description : "Press Start Process",
         NodesToSendValue : [
             {
@@ -1644,7 +1634,7 @@ module.exports = [
 
 
     {
-        StepNo : 108,
+        
         Description : "Press Door Opened",
         NodesToCheckValue : [
             {
@@ -1655,9 +1645,8 @@ module.exports = [
         ]
     },
 
-
     {
-        StepNo : 109,
+        
         Description : "IIWA Put bearing 32205 (B1) to 310.3, transfer gear on fixture 310.3, 30304 (B2) to 310.2 and transfer shaft to 310.1",
         NodesToSendValue : [
             {
@@ -1667,8 +1656,9 @@ module.exports = [
             },
         ]
     },
+
     {
-        StepNo : 110,
+        
         Description : "IIWA Part on location & Parts placed on true places to start the operation",
         NodesToCheckValue : [
             {
@@ -1681,6 +1671,182 @@ module.exports = [
                 NodeDesiredValue : true,
                 NodeDataType : DataType.Boolean
             }     
+        ]
+    },
+
+    {
+        
+        Description : "Press Start Press Program 1",
+        NodesToSendValue : [
+            {
+                NodeId : "St310.St310.310_000+S-K010.DataBlocksGlobal.OPC.St310WorkOrderActive",
+                NodeDesiredValue : true,
+                NodeDataType : DataType.Boolean
+            }
+        ]
+    },
+
+    {
+        
+        Description : "Press Program 1 Start",
+        NodesToCheckValue : [
+            {
+                NodeId : "St310.St310.310_000+S-K010.DataBlocksGlobal.OPC.St310ProcessStatus",
+                NodeDesiredValue : 4,
+                NodeDataType : DataType.Byte
+            },
+        ]
+    },
+
+    {
+        
+        Description : "Press Program 1 Complete",
+        NodesToCheckValue : [
+            {
+                NodeId : "St310.St310.310_000+S-K010.DataBlocksGlobal.OPC.St310ProcessStatus",
+                NodeDesiredValue : 8,
+                NodeDataType : DataType.Byte
+            },
+            {
+                NodeId : "St310.St310.310_000+S-K010.DataBlocksGlobal.OPC.St310DoorIsOpen",
+                NodeDesiredValue : true,
+                NodeDataType : DataType.Boolean
+            },
+            {
+                NodeId : "St310.St310.310_000+S-K010.DataBlocksGlobal.OPC.St310PartResult",
+                NodeDesiredValue : "1",
+                NodeDataType : DataType.Byte
+            }  
+        ]
+    },
+
+
+    {
+        
+        Description : "IIWA Take Transfer Subassy from 310.3 and put on tray position",
+        NodesToSendValue : [
+            {
+                NodeId : "ST300.MES.St300UnloadTransferSubassy",
+                NodeDesiredValue : 1,
+                NodeDataType : DataType.Int32
+            },
+        ]
+    },
+
+    {
+        
+        Description : "IIWA Part on location",
+        NodesToCheckValue : [
+            {
+                NodeId : "ST300.MES.St300UnloadTransferSubassy",
+                NodeDesiredValue : 2,
+                NodeDataType : DataType.Int32
+            },
+        ]
+    },
+
+    {
+        
+        Description : "Press Close Press Door",
+        NodesToSendValue : [ 
+            {
+                NodeId : "St310.St310.310_000+S-K010.DataBlocksGlobal.OPC.St310IIWAinNode4",
+                NodeDesiredValue : true,
+                NodeDataType : DataType.Boolean
+            },
+            {
+                NodeId : "St310.St310.310_000+S-K010.DataBlocksGlobal.OPC.St310ProcessStatus",
+                NodeDesiredValue : 0,
+                NodeDataType : DataType.Byte
+            }
+        ]
+    },
+
+    {
+        
+        Description : "Press READY",
+        NodesToCheckValue : [
+            {
+                NodeId : "St310.St310.310_000+S-K010.DataBlocksGlobal.OPC.St310MachineState",
+                NodeDesiredValue : "4",
+                NodeDataType : DataType.Int16
+            },            
+            {
+                NodeId : "St310.St310.310_000+S-K010.DataBlocksGlobal.OPC.St310ProcessStatus",
+                NodeDesiredValue : 0,
+                NodeDataType : DataType.Byte
+            },
+            {
+                NodeId : "St310.St310.310_000+S-K010.DataBlocksGlobal.OPC.St310DoorIsOpen",
+                NodeDesiredValue : false,
+                NodeDataType : DataType.Boolean
+            },
+            {
+                NodeId : "St310.St310.310_000+S-K010.DataBlocksGlobal.OPC.St310WorkOrderActive",
+                NodeDesiredValue : false,
+                NodeDataType : DataType.Boolean
+            }   
+        ]
+    },
+
+    {
+        
+        Description : "IIWA Go node 5 (WP1)",
+        NodesToSendValue : [
+            {
+                NodeId : "ST300.MES.St300MoveNode5",
+                NodeDesiredValue : 1,
+                NodeDataType : DataType.Int32
+            }
+        ]
+    },
+
+    {
+        
+        Description : "IIWA In node 5 (WP1)",
+        NodesToCheckValue : [
+            {
+                NodeId : "ST300.MES.St300MoveNode5",
+                NodeDesiredValue : 2,
+                NodeDataType : DataType.Int32
+            }
+        ]
+    },
+
+    
+    {
+        
+        Description : "IIWA Locate subassys to buffer zone",
+        NodesToSendValue : [
+            {
+                NodeId : "ST300.MES.St300LoadJig",
+                NodeDesiredValue : 1,
+                NodeDataType : DataType.Int32
+            }
+        ]
+    },
+
+    {
+        
+        Description : "IIWA Subassys are in buffer zone",
+        NodesToCheckValue : [
+            {
+                NodeId : "ST300.MES.St300LoadJig",
+                NodeDesiredValue : 2,
+                NodeDataType : DataType.Int32
+            }
+        ]
+    },
+
+    {
+        
+        Description : "IIWA Locate subassys to buffer zone",
+        NodesToSendValue : [
+            {
+                NodeId : "ST300.MES.St300MoveNode6",
+                NodeDesiredValue : 1,
+                NodeDataType : DataType.Int32
+            }
         ]
     },
 ];
