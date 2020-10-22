@@ -17,7 +17,7 @@ var moment            = require('moment');
 var                   _ = require('lodash');
 
 var app               = express();
-var port              = 3000;
+var port              = 6100;
 var currentSteps      = undefined
 var currentTestDb     = undefined;
 
