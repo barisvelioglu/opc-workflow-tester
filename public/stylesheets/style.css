@@ -87,7 +87,6 @@ div.bullet.failed:before{
 div.bullet.action:hover:before 
 {
   cursor: pointer;
-  background:rgb(32, 66, 109);
 }
 
 ul li{
@@ -134,6 +133,12 @@ ul li:nth-child(odd) {
   font-size: 14px;
 }
 
+.test-title
+{
+  font-weight: bold;
+  font-family: fantasy;
+  padding:40px 20px 20px;
+}
 
 @keyframes blinker {
   50% {

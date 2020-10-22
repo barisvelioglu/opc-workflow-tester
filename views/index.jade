@@ -2,7 +2,7 @@ extends layout
 
 block content
   script.
-    var socket = io.connect('http://localhost:3000');
+    var socket = io.connect('http://localhost:6100');
     var steps = !{JSON.stringify(steps)};
 
     socket.on("nodeValueChange", function(data) {
@@ -23,7 +23,8 @@ block content
 
     });
 
-  h1.text-center CNC TEST
+  h1.test-title.text-center CNC WORKFLOW
+  hr
   div.d-flex.justify-content-center
     button#btn-start.btn.btn-success.text-center.hvr-buzz START
   main
