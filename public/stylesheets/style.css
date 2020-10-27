@@ -140,6 +140,23 @@ ul li:nth-child(odd) {
   padding:40px 20px 20px;
 }
 
+.testImage
+{
+	overflow: hidden;
+	height: 200px;
+	
+}
+
+.testImage img
+{
+  width:200px;
+}
+
+.testDescription
+{
+  padding:20px 0px;
+}
+
 @keyframes blinker {
   50% {
     opacity: 0;
