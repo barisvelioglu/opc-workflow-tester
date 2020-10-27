@@ -12,6 +12,8 @@ block content
         each workflow in workflows
           .col-sm-4
             h3= workflow.name
+            div
+              img(src=workflow.image)
             p= workflow.description
             a(href=workflow.name)
               button.btn.btn-lg.btn-success Test

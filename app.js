@@ -18,7 +18,8 @@ for (let key in tests) {
   let test = tests[key];
 
   workflows.push({
-    name : key,
+    name        : key,
+    image       : test.Image,
     description : test.Description 
   });
 
@@ -191,7 +192,7 @@ function checkAndSetStates(key, nodeId, value){
         cs.State = "Waiting"
       }
 
-      io.sockets.emit("step", {
+      io.sockets.emit(key+ "_step", {
         nodeId: nodeId,
         stepNo: cs.StepNo,
         state : cs.State

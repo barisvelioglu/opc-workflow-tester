@@ -2,6 +2,7 @@ const { DataType } = require("node-opcua");
 
 module.exports = {
     CNC : {
+        Image : "/images/test.jpg",
         Description : "Numerical control is the automated control of machining tools and 3D printers by means of a computer. A CNC machine processes a piece of material to meet specifications by following a coded programmed instruction and without a manual operator directly controlling the machining operation.",
         TestSteps : [
             {
@@ -1933,6 +1934,7 @@ module.exports = {
         ]
     },
     MOLDING : {
+        Image : "/images/test.jpg",
         Description : "An Injection molding machine, or, also known as an injection press, is a machine for manufacturing plastic products by the injection molding process. It consists of two main parts, an injection unit and a clamping unit.",
         TestSteps : [
             {
