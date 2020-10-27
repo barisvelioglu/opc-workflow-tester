@@ -11,9 +11,10 @@ block content
       .row
         each workflow in workflows
           .col-sm-4
-            h3= workflow.name
-            div.testImage
-              img(src=workflow.image)
-            p.testDescription= workflow.description
-            a(href=workflow.name)
-              button.btn.btn-lg.btn-success Test
+            div.testContainer
+              h3= workflow.name
+              div.testImage
+                img(src=workflow.image)
+              p.testDescription= workflow.description
+              a(href=workflow.name)
+                button.btn.btn-lg.btn-success Test
