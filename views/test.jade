@@ -1,0 +1,66 @@
+extends layout
+
+block content
+  script.
+    var socket = io.connect('http://localhost:6100');
+    var steps = !{JSON.stringify(testSteps)};
+    var testName = '!{testName}';
+
+    socket.on(testName + "_nodeValueChange", function(data) {
+      $("span[data-nodeid='" + data.nodeId + "']").text(data.value);
+    });
+
+    socket.on(testName + "_step", function (data) {
+
+      if(data.state == "Succeed"){
+        $("div[data-step='" + data.stepNo + "']")            
+          .addClass('succeed');
+      }else{
+         $("div[data-step='" + data.stepNo + "']")            
+          .removeClass('succeed');
+      }
+      
+    });
+
+  h1.test-title.text-center= pageTitle
+  hr
+  div.d-flex.justify-content-center
+    button#btn-start.btn.btn-success.btn-lg.text-center.hvr-buzz START
+  main
+
+    each step in testSteps
+      div(data-step=step.StepNo)(class=step.NodesToSendValue ? 'action' : '').bullet.waiting
+        p.description= step.Description
+        ul
+          -if(step.NodesToCheckValue)
+            ul
+              each node in step.NodesToCheckValue
+                li
+                  span.nodeId= node.NodeId 
+                  span.nodeDemandValue= node.NodeDesiredValue
+                  span(data-nodeid=node.NodeId).nodeCurrentValue
+
+          -if(step.NodesToSendValue)
+            ul
+              each node in step.NodesToSendValue
+                li
+                  span.nodeId= node.NodeId
+                  span.nodeCommandValue= node.NodeDesiredValue
+                  span(data-nodeid=node.NodeId).nodeCurrentValue
+          
+    script.
+      $(".bullet").click(function(){
+        var isActionable = $(this).hasClass("action");
+        
+        if(isActionable){
+          var dataStep = $(this).data("step");
+          socket.emit(testName + "_" + dataStep, "");
+        }
+      });
+
+      $('#btn-start').click(function(){
+          socket.emit("start-test", {
+            testName : testName
+          });
+          window.location.reload();
+      });             

@@ -3,31 +3,33 @@ var express           = require('express');
 var path              = require('path');
 var cookieParser      = require('cookie-parser');
 var logger            = require('morgan');
-var indexRouter       = require('./routes/index');
 var testRouter        = require('./routes/test');
 var socketIO          = require("socket.io");
-var async             = require('async');
 var opcClient         = require('./opc-client');
-const { DataType }    = require('node-opcua');
-var steps             = require('./test-steps');
-var resetNodeValues   = require('./reset-node-values');
+var tests             = require('./test');
 var helpers           = require('./helpers');
-var JSONdb            = require('simple-json-db');
-var moment            = require('moment');
-var                   _ = require('lodash');
+var _                 = require('lodash');
 
 var app               = express();
 var port              = 6100;
-var currentSteps      = undefined
-var currentTestDb     = undefined;
+var workflows          = [];
 
-var stepCounter = 1;
-steps.forEach(s => {
-  s.StepNo = stepCounter++;
-});
+for (let key in tests) {
+  let test = tests[key];
 
-console.log("--- steps ---");
-console.log(steps);
+  workflows.push({
+    name : key,
+    description : test.Description 
+  });
+
+  for (let i= 1; i <= test.TestSteps.length; i++) {
+    test.TestSteps[i -1].StepNo = i;
+  }
+
+  app.get('/' + key, function(req, res, next){
+    res.render('test', { pageTitle: key + ' WORKFLOW', testSteps : test.TestSteps, testName: key });
+  });
+}
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -39,8 +41,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', function(req, res, next) {
-  res.render('index', { title: 'CNC Test', steps : currentSteps || [] });
+app.get('/', function(req, res, next){
+  res.render('index', { title: 'WORKFLOWS', workflows: workflows });
 });
 
 app.use('/test', testRouter);
@@ -65,62 +67,77 @@ const io = socketIO.listen(app.listen(port));
 
 io.sockets.on('connection', function (client) {
   
-  for (let index = 0; index < steps.length; index++) {
-    const step = steps[index];
+  for (let key in tests) {
+    let test = tests[key];
 
-    client.on(step.StepNo, async function(data){
+    //todo
+    for (let index = 0; index < test.TestSteps.length; index++) {
+      let step = test.TestSteps[index];
+      
       if(step.NodesToSendValue){
-        for (let i = 0; i < step.NodesToSendValue.length; i++) {
-          const nodeInfo = step.NodesToSendValue[i];
-          await opcClient.write(nodeInfo.NodeId, nodeInfo.NodeDataType, nodeInfo.NodeDesiredValue);
-        }
+        
+        client.on(key + "_" + step.StepNo, async function(data){
+        
+          for (let i = 0; i < step.NodesToSendValue.length; i++) {
+            const nodeInfo = step.NodesToSendValue[i];
+            await opcClient.write(nodeInfo.NodeId, nodeInfo.NodeDataType, nodeInfo.NodeDesiredValue);
+          }
+
+        });
       }
-    });
+    }
   }
 
   client.on('start-test', async function(data){
-    currentSteps     = require('./test-steps');
-    let fileDateName = moment().format("DDMMYYYYThhmmss");
-    currentTestDb = new JSONdb('./tests/'+fileDateName+'.json');
-    
-    for (let i = 0; i < currentSteps.length; i++) {
-      const s = currentSteps[i];
 
-      if(i == 0){
-        s.State = "Active";
+    for (let key in tests) {
+
+      if(key == data.testName){
+        
+        let test = tests[key];
+
+        for (let i = 0; i < test.TestSteps.length; i++) {
+          let s = test.TestSteps[i];
+    
+          if(i == 0){
+            s.State = "Active";
+          }else{
+            s.State = "Waiting";
+          }
+        }
+    
+        await helpers.wait(2000);
+    
+        for (let i = 0; i < test.ResetNodeValues.length; i++) {
+          let el = test.ResetNodeValues[i];
+    
+          let readData = await opcClient.read(el.nodeId);
+          
+          io.sockets.emit(key + "_nodeValueChange", {
+            value: readData.value.value,
+            nodeId: el.nodeId
+          });  
+        }
+    
+        for (let i = 0; i < test.ResetNodeValues.length; i++) {
+          let el = test.ResetNodeValues[i];
+          await opcClient.write(el.nodeId, el.dataType, el.value);      
+        }
+
       }else{
-        s.State = "Waiting";
+        //discard
       }
     }
 
-    currentTestDb.set('state', currentSteps);
-
-    await helpers.wait(2000);
-
-    for (let i = 0; i < resetNodeValues.length; i++) {
-      let el = resetNodeValues[i];
-
-      let readData = await opcClient.read(el.nodeId);
-      
-      io.sockets.emit("nodeValueChange", {
-        value: readData.value.value,
-        nodeId: el.nodeId
-      });  
-    }
-
-    for (let i = 0; i < resetNodeValues.length; i++) {
-      const el = resetNodeValues[i];
-      await opcClient.write(el.nodeId, el.dataType, el.value);      
-    }
   });
   
 });
 
-function checkAndSetStates(nodeId, value){
+function checkAndSetStates(key, nodeId, value){
   //Active Waiting Succeed
   //check all states and make succeed or not
-  for (var xx = 0; xx < currentSteps.length; xx++) {
-    var cs = currentSteps[xx];
+  for (let xx = 0; xx < tests[key].TestSteps.length; xx++) {
+    let cs = tests[key].TestSteps[xx];
 
     //check all values for currentState
     if(cs.NodesToCheckValue){
@@ -145,7 +162,7 @@ function checkAndSetStates(nodeId, value){
 
       //burada step sonucu gönderilebilir gibi duruyor direkt 
       //ui da hesap yapılmasına gerek olmaz
-      io.sockets.emit("step", {
+      io.sockets.emit(key+ "_step", {
         nodeId: nodeId,
         stepNo: cs.StepNo,
         state : cs.State
@@ -182,54 +199,57 @@ function checkAndSetStates(nodeId, value){
       
     }
   }
-
-  currentTestDb.set('state', currentSteps);
 }
 
 (async function init(){
   await opcClient.initialize();
 
-  for (let index = 0; index < steps.length; index++) {
-    const step = steps[index];
+  for (let key in tests) {
+    
+    var test = tests[key];
 
-    if(step.NodesToCheckValue){
-      for (let y = 0; y < step.NodesToCheckValue.length; y++) {
-        const el = step.NodesToCheckValue[y];
-        await helpers.wait(250);
-
-        await opcClient.monitor(el.NodeId, function(data){
+    for (let index = 0; index < test.TestSteps.length; index++) {
+      let step = test.TestSteps[index];
+  
+      if(step.NodesToCheckValue){
+        for (let y = 0; y < step.NodesToCheckValue.length; y++) {
+          let el = step.NodesToCheckValue[y];
+          await helpers.wait(100);
+  
+          await opcClient.monitor(el.NodeId, function(data){
+            
+            checkAndSetStates(key, el.NodeId, data.value.value);
+  
+            io.sockets.emit(key + "_nodeValueChange", {
+              value: data.value.value,
+              timestamp: data.serverTimestamp,
+              nodeId: el.NodeId
+            });
+  
+          });
+        }
+      }
+  
+      if(step.NodesToSendValue){
+        for (let x = 0; x < step.NodesToSendValue.length; x++) {
+          const el = step.NodesToSendValue[x];
+          await helpers.wait(100);
+          await opcClient.monitor(el.NodeId, function(data){
+  
+            checkAndSetStates(key, el.NodeId, data.value.value);
+  
+            io.sockets.emit(key + "_nodeValueChange", {
+              value: data.value.value,
+              timestamp: data.serverTimestamp,
+              nodeId: el.NodeId
+            });
+  
+          });
           
-          checkAndSetStates(el.NodeId, data.value.value);
-
-          io.sockets.emit("nodeValueChange", {
-            value: data.value.value,
-            timestamp: data.serverTimestamp,
-            nodeId: el.NodeId
-          });
-
-        });
+        }
       }
+
     }
-
-    if(step.NodesToSendValue){
-      for (let x = 0; x < step.NodesToSendValue.length; x++) {
-        const el = step.NodesToSendValue[x];
-        await helpers.wait(250);
-        await opcClient.monitor(el.NodeId, function(data){
-
-          checkAndSetStates(el.NodeId, data.value.value);
-
-          io.sockets.emit("nodeValueChange", {
-            value: data.value.value,
-            timestamp: data.serverTimestamp,
-            nodeId: el.NodeId
-          });
-
-        });
-        
-      }
-    }
-
   }
 
 }());
