@@ -18,8 +18,8 @@ for (let key in tests) {
   let test = tests[key];
 
   workflows.push({
-    name        : key,
-    image       : test.Image,
+    name 		: key,
+	image		: test.Image,
     description : test.Description 
   });
 

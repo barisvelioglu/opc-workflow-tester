@@ -2,7 +2,7 @@ const { DataType } = require("node-opcua");
 
 module.exports = {
     CNC : {
-        Image : "/images/test.jpg",
+		Image : "/images/cnc.jpg",
         Description : "Numerical control is the automated control of machining tools and 3D printers by means of a computer. A CNC machine processes a piece of material to meet specifications by following a coded programmed instruction and without a manual operator directly controlling the machining operation.",
         TestSteps : [
             {
@@ -1934,7 +1934,7 @@ module.exports = {
         ]
     },
     MOLDING : {
-        Image : "/images/test.jpg",
+		Image : "/images/molding.jpeg",
         Description : "An Injection molding machine, or, also known as an injection press, is a machine for manufacturing plastic products by the injection molding process. It consists of two main parts, an injection unit and a clamping unit.",
         TestSteps : [
             {
@@ -1960,14 +1960,1859 @@ module.exports = {
                         NodeDesiredValue : 54
                     },
                     {
+                        NodeId : "St200.St200.ST200PartQuantity",
+                        NodeDesiredValue : 16
+                    },
+                    {
                         NodeId : "St200.St200.ST210MoldingOrder",
                         NodeDesiredValue : 1
                     }
                 ]
             },
+            {
+                
+                Description : "Is ST200PressCount equal to SplittingThreshold Value?",
+                NodesToCheckValue : [
+                    {
+                        NodeId : "St200.St200.ST200PressCount",
+                        NodeDesiredValue : 8
+                    }
+                ]
+            },
+            {
+                
+                Description : "Molding Machine Finishes",
+                NodesToCheckValue : [
+                    {
+                        NodeId : "St200.St200.ST200WorkOrderActive",
+                        NodeDesiredValue : false
+                    }
+                ]
+            },
+        ],
+        ResetNodeValues : [
+            { nodeId : "St200.St200.ST200WorkOrderActive", value : false, dataType : DataType.Boolean },
+            { nodeId : "St200.St200.ST200PressCount", value : 0, dataType : DataType.Int32 },
+            { nodeId : "St200.St200.ST210MoldingOrder", value : 0, dataType : DataType.Int32 },
+            { nodeId : "St200.St200.ST200PartQuantity", value : 0, dataType : DataType.Int32 },
+            { nodeId : "St200.St200.ST200AmountOfPlastic", value : 0, dataType : DataType.Int32 },
+            { nodeId : "St200.St200.St200ChillingDuration", value : 0, dataType : DataType.Int32 },   
+            { nodeId : "St200.St200.St200.St200.St200MachineStatus", value : 0, dataType : DataType.Int32 },         
+            
+        ]
+    },
+	ASSEMBLY_WP1 : {
+		Image : "/images/molding.jpeg",
+        Description : "WP1 Assembly TestSteps",
+        TestSteps : [
+            
+            {
+                
+                Description : "Make WP1 Starved",
+                NodesToSendValue : [
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St110JigPresentBit2",
+                        NodeDesiredValue : 0
+                    },
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St110ProcessStatusBit1",
+                        NodeDesiredValue : 0
+                    },
+                    {
+                        NodeId : "AdvancedTags.WP1_Down",
+                        NodeDesiredValue : 0
+                    },
+                   
+                ]
+            },
+			{
+                
+                Description : "WP1 Starved ",
+                NodesToCheckValue : [
+                    {
+                        NodeId : "AdvancedTags.WP1_Starved",
+                        NodeDesiredValue : 1
+                    }
+                ]
+            },
+		            {
+                
+                Description : "Make WP1 Transfer",
+                NodesToSendValue : [
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St110JigPresentBit2",
+                        NodeDesiredValue : 1
+                    },
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St110ProcessStatusBit1",
+                        NodeDesiredValue : 0
+                    },
+					{
+                        NodeId : "Test-Camurdan.Bitmask.St110ProcessStatusBit3",
+                        NodeDesiredValue : 0
+                    },
+                    {
+                        NodeId : "AdvancedTags.WP1_Down",
+                        NodeDesiredValue : 0
+                    },
+                   
+                ]
+            },
+			{
+                
+                Description : "WP1 Transfer ",
+                NodesToCheckValue : [
+                    {
+                        NodeId : "AdvancedTags.WP1_Transfer",
+                        NodeDesiredValue : 1
+                    }
+                ]
+            },
+			        {
+                
+                Description : "Make WP1 Cycle",
+                NodesToSendValue : [
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St110JigPresentBit2",
+                        NodeDesiredValue : 1
+                    },
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St110ProcessStatusBit1",
+                        NodeDesiredValue : 1
+                    },
+                    {
+                        NodeId : "AdvancedTags.WP1_Down",
+                        NodeDesiredValue : 0
+                    },
+                   
+                ]
+            },
+			{
+                
+                Description : "WP1 Cycling ",
+                NodesToCheckValue : [
+                    {
+                        NodeId : "AdvancedTags.WP1_Cycling",
+                        NodeDesiredValue : 1
+                    }
+                ]
+            },
+			        {
+                
+                Description : "Make WP1 Down",
+                NodesToSendValue : [
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St110JigPresentBit2",
+                        NodeDesiredValue : 1
+                    },
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St110ProcessStatusBit1",
+                        NodeDesiredValue : 0
+                    },
+                    {
+                        NodeId : "AdvancedTags.WP1_Down",
+                        NodeDesiredValue : 1
+                    },
+                   
+                ]
+            },
+			{
+                
+                Description : "WP1 Down ",
+                NodesToCheckValue : [
+                    {
+                        NodeId : "AdvancedTags.WP1_Down",
+                        NodeDesiredValue : 1
+                    }
+                ]
+            },
+			        {
+                
+                Description : "Make WP1 Cycle2",
+                NodesToSendValue : [
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St110JigPresentBit2",
+                        NodeDesiredValue : 1
+                    },
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St110ProcessStatusBit1",
+                        NodeDesiredValue : 1
+                    },
+                    {
+                        NodeId : "AdvancedTags.WP1_Down",
+                        NodeDesiredValue : 0
+                    },
+                   
+                ]
+            },
+			{
+                
+                Description : "WP1 Cycling2 ",
+                NodesToCheckValue : [
+                    {
+                        NodeId : "AdvancedTags.WP1_Cycling",
+                        NodeDesiredValue : 1
+                    }
+                ]
+            },
+			        {
+                
+                Description : "Make WP1 Block",
+                NodesToSendValue : [
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St110JigPresentBit2",
+                        NodeDesiredValue : 1
+                    },
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St110ProcessStatusBit1",
+                        NodeDesiredValue : 0
+                    },
+					
+					 {
+                        NodeId : "Test-Camurdan.Bitmask.St110ProcessStatusBit3",
+                        NodeDesiredValue : 1
+                    },
+                    {
+                        NodeId : "AdvancedTags.WP1_Down",
+                        NodeDesiredValue : 0
+                    },
+                   
+                ]
+            },
+			{
+                
+                Description : "WP1 Block ",
+                NodesToCheckValue : [
+                    {
+                        NodeId : "AdvancedTags.WP1_Block",
+                        NodeDesiredValue : 1
+                    }
+                ]
+            },
+			
+			 {
+                
+                Description : "Make WP1 Transfer2",
+                NodesToSendValue : [
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St110JigPresentBit2",
+                        NodeDesiredValue : 1
+                    },
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St110ProcessStatusBit1",
+                        NodeDesiredValue : 0
+                    },
+					 {
+                        NodeId : "Test-Camurdan.Bitmask.St110ProcessStatusBit3",
+                        NodeDesiredValue : 0
+                    },
+                    {
+                        NodeId : "AdvancedTags.WP1_Down",
+                        NodeDesiredValue : 0
+                    },
+                   
+                ]
+            },
+			{
+                
+                Description : "WP1 Transfer2 ",
+                NodesToCheckValue : [
+                    {
+                        NodeId : "AdvancedTags.WP1_Transfer",
+                        NodeDesiredValue : 1
+                    }
+                ]
+            },
+			
+			{
+                
+                Description : "Make WP1 Starved2",
+                NodesToSendValue : [
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St110JigPresentBit2",
+                        NodeDesiredValue : 0
+                    },
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St110ProcessStatusBit1",
+                        NodeDesiredValue : 0
+                    },
+                    {
+                        NodeId : "AdvancedTags.WP1_Down",
+                        NodeDesiredValue : 0
+                    },
+                   
+                ]
+            },
+			{
+                
+                Description : "WP1 Starved2 ",
+                NodesToCheckValue : [
+                    {
+                        NodeId : "AdvancedTags.WP1_Starved",
+                        NodeDesiredValue : 1
+                    }
+                ]
+            },
+			
+			
         ],
         ResetNodeValues : [
 
         ]
-    }
+	},
+	ASSEMBLY_WP2 : {
+		Image : "/images/molding.jpeg",
+        Description : "WP2 Assembly TestSteps",
+        TestSteps : [
+            
+            {
+                
+                Description : "Make WP2 Starved",
+                NodesToSendValue : [
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St110JigPresentBit3",
+                        NodeDesiredValue : 0
+                    },
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St110ProcessStatusBit3",
+                        NodeDesiredValue : 0
+                    },
+                    {
+                        NodeId : "AdvancedTags.WP2_Down",
+                        NodeDesiredValue : 0
+                    },
+                   
+                ]
+            },
+			{
+                
+                Description : "WP2 Starved ",
+                NodesToCheckValue : [
+                    {
+                        NodeId : "AdvancedTags.WP2_Starved",
+                        NodeDesiredValue : 1
+                    }
+                ]
+            },
+		            {
+                
+                Description : "Make WP2 Transfer",
+                NodesToSendValue : [
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St110JigPresentBit3",
+                        NodeDesiredValue : 1
+                    },
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St110ProcessStatusBit3",
+                        NodeDesiredValue : 0
+                    },
+					{
+                        NodeId : "Test-Camurdan.Bitmask.St110ProcessStatusBit7",
+                        NodeDesiredValue : 0
+                    },
+                    {
+                        NodeId : "AdvancedTags.WP2_Down",
+                        NodeDesiredValue : 0
+                    },
+                   
+                ]
+            },
+			{
+                
+                Description : "WP2 Transfer ",
+                NodesToCheckValue : [
+                    {
+                        NodeId : "AdvancedTags.WP2_Transfer",
+                        NodeDesiredValue : 1
+                    }
+                ]
+            },
+			        {
+                
+                Description : "Make WP2 Cycle",
+                NodesToSendValue : [
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St110JigPresentBit3",
+                        NodeDesiredValue : 1
+                    },
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St110ProcessStatusBit3",
+                        NodeDesiredValue : 1
+                    },
+                    {
+                        NodeId : "AdvancedTags.WP2_Down",
+                        NodeDesiredValue : 0
+                    },
+                   
+                ]
+            },
+			{
+                
+                Description : "WP2 Cycling ",
+                NodesToCheckValue : [
+                    {
+                        NodeId : "AdvancedTags.WP2_Cycling",
+                        NodeDesiredValue : 1
+                    }
+                ]
+            },
+			        {
+                
+                Description : "Make WP2 Down",
+                NodesToSendValue : [
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St110JigPresentBit3",
+                        NodeDesiredValue : 1
+                    },
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St110ProcessStatusBit3",
+                        NodeDesiredValue : 0
+                    },
+                    {
+                        NodeId : "ST110.Device1.110_000+S-K010.DataBlocksGlobal.OPC.St110ErrorFlag",
+                        NodeDesiredValue : 1
+                    },
+                   
+                ]
+            },
+			{
+                
+                Description : "WP2 Down ",
+                NodesToCheckValue : [
+                    {
+                        NodeId : "AdvancedTags.WP2_Down",
+                        NodeDesiredValue : 1
+                    }
+                ]
+            },
+			        {
+                
+                Description : "Make WP2 Cycle2",
+                NodesToSendValue : [
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St110JigPresentBit3",
+                        NodeDesiredValue : 1
+                    },
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St110ProcessStatusBit3",
+                        NodeDesiredValue : 1
+                    },
+                    {
+                        NodeId : "AdvancedTags.WP2_Down",
+                        NodeDesiredValue : 0
+                    },
+                   
+                ]
+            },
+			{
+                
+                Description : "WP2 Cycling2 ",
+                NodesToCheckValue : [
+                    {
+                        NodeId : "AdvancedTags.WP2_Cycling",
+                        NodeDesiredValue : 1
+                    }
+                ]
+            },
+			        {
+                
+                Description : "Make WP2 Block",
+                NodesToSendValue : [
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St110JigPresentBit3",
+                        NodeDesiredValue : 1
+                    },
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St110ProcessStatusBit3",
+                        NodeDesiredValue : 0
+                    },
+					
+					 {
+                        NodeId : "Test-Camurdan.Bitmask.St110ProcessStatusBit7",
+                        NodeDesiredValue : 1
+                    },
+                    {
+                        NodeId : "AdvancedTags.WP2_Down",
+                        NodeDesiredValue : 0
+                    },
+                   
+                ]
+            },
+			{
+                
+                Description : "WP2 Block ",
+                NodesToCheckValue : [
+                    {
+                        NodeId : "AdvancedTags.WP2_Block",
+                        NodeDesiredValue : 1
+                    }
+                ]
+            },
+			
+			 {
+                
+                Description : "Make WP2 Transfer2",
+                NodesToSendValue : [
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St110JigPresentBit3",
+                        NodeDesiredValue : 1
+                    },
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St110ProcessStatusBit3",
+                        NodeDesiredValue : 0
+                    },
+					 {
+                        NodeId : "Test-Camurdan.Bitmask.St110ProcessStatusBit7",
+                        NodeDesiredValue : 0
+                    },
+                    {
+                        NodeId : "AdvancedTags.WP2_Down",
+                        NodeDesiredValue : 0
+                    },
+                   
+                ]
+            },
+			{
+                
+                Description : "WP2 Transfer2 ",
+                NodesToCheckValue : [
+                    {
+                        NodeId : "AdvancedTags.WP2_Transfer",
+                        NodeDesiredValue : 1
+                    }
+                ]
+            },
+			
+			{
+                
+                Description : "Make WP2 Starved2",
+                NodesToSendValue : [
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St110JigPresentBit3",
+                        NodeDesiredValue : 0
+                    },
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St110ProcessStatusBit3",
+                        NodeDesiredValue : 0
+                    },
+                    {
+                        NodeId : "AdvancedTags.WP2_Down",
+                        NodeDesiredValue : 0
+                    },
+                   
+                ]
+            },
+			{
+                
+                Description : "WP2 Starved2 ",
+                NodesToCheckValue : [
+                    {
+                        NodeId : "AdvancedTags.WP2_Starved",
+                        NodeDesiredValue : 1
+                    }
+                ]
+            },
+			
+			
+        ],
+        ResetNodeValues : [
+
+        ]
+	},
+	ASSEMBLY_WP3 : {
+		Image : "/images/molding.jpeg",
+        Description : "WP3 Assembly TestSteps",
+        TestSteps : [
+            
+            {
+                
+                Description : "Make WP3 Starved",
+                NodesToSendValue : [
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St110JigPresentBit4",
+                        NodeDesiredValue : 0
+                    },
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St110ProcessStatusBit7",
+                        NodeDesiredValue : 0
+                    },
+                    {
+                        NodeId : "AdvancedTags.WP3_Down",
+                        NodeDesiredValue : 0
+                    },
+                   
+                ]
+            },
+			{
+                
+                Description : "WP3 Starved ",
+                NodesToCheckValue : [
+                    {
+                        NodeId : "AdvancedTags.WP3_Starved",
+                        NodeDesiredValue : 1
+                    }
+                ]
+            },
+		            {
+                
+                Description : "Make WP3 Transfer",
+                NodesToSendValue : [
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St110JigPresentBit4",
+                        NodeDesiredValue : 1
+                    },
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St110ProcessStatusBit7",
+                        NodeDesiredValue : 0
+                    },
+					{
+                        NodeId : "Test-Camurdan.Bitmask.St120ProcessStatusBit1",
+                        NodeDesiredValue : 0
+                    },
+                    {
+                        NodeId : "AdvancedTags.WP3_Down",
+                        NodeDesiredValue : 0
+                    },
+                   
+                ]
+            },
+			{
+                
+                Description : "WP3 Transfer ",
+                NodesToCheckValue : [
+                    {
+                        NodeId : "AdvancedTags.WP3_Transfer",
+                        NodeDesiredValue : 1
+                    }
+                ]
+            },
+			        {
+                
+                Description : "Make WP3 Cycle",
+                NodesToSendValue : [
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St110JigPresentBit4",
+                        NodeDesiredValue : 1
+                    },
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St110ProcessStatusBit7",
+                        NodeDesiredValue : 1
+                    },
+                    {
+                        NodeId : "AdvancedTags.WP3_Down",
+                        NodeDesiredValue : 0
+                    },
+                   
+                ]
+            },
+			{
+                
+                Description : "WP3 Cycling ",
+                NodesToCheckValue : [
+                    {
+                        NodeId : "AdvancedTags.WP3_Cycling",
+                        NodeDesiredValue : 1
+                    }
+                ]
+            },
+			        {
+                
+                Description : "Make WP3 Down",
+                NodesToSendValue : [
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St110JigPresentBit4",
+                        NodeDesiredValue : 1
+                    },
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St110ProcessStatusBit7",
+                        NodeDesiredValue : 0
+                    },
+                    {
+                        NodeId : "ST110.Device1.110_000+S-K010.DataBlocksGlobal.OPC.St110ErrorFlag",
+                        NodeDesiredValue : 1
+                    },
+                   
+                ]
+            },
+			{
+                
+                Description : "WP3 Down ",
+                NodesToCheckValue : [
+                    {
+                        NodeId : "AdvancedTags.WP3_Down",
+                        NodeDesiredValue : 1
+                    }
+                ]
+            },
+			        {
+                
+                Description : "Make WP3 Cycle2",
+                NodesToSendValue : [
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St110JigPresentBit4",
+                        NodeDesiredValue : 1
+                    },
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St110ProcessStatusBit7",
+                        NodeDesiredValue : 1
+                    },
+                    {
+                        NodeId : "AdvancedTags.WP3_Down",
+                        NodeDesiredValue : 0
+                    },
+                   
+                ]
+            },
+			{
+                
+                Description : "WP3 Cycling2 ",
+                NodesToCheckValue : [
+                    {
+                        NodeId : "AdvancedTags.WP3_Cycling",
+                        NodeDesiredValue : 1
+                    }
+                ]
+            },
+			        {
+                
+                Description : "Make WP3 Block",
+                NodesToSendValue : [
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St110JigPresentBit4",
+                        NodeDesiredValue : 1
+                    },
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St110ProcessStatusBit7",
+                        NodeDesiredValue : 0
+                    },
+					
+					 {
+                        NodeId : "ST120.ST120.120_000+S-K010.DataBlocksGlobal.OPC.St120ErrorFlag",
+                        NodeDesiredValue : 1
+                    },
+                    {
+                        NodeId : "AdvancedTags.WP3_Down",
+                        NodeDesiredValue : 0
+                    },
+                   
+                ]
+            },
+			{
+                
+                Description : "WP3 Block ",
+                NodesToCheckValue : [
+                    {
+                        NodeId : "AdvancedTags.WP3_Block",
+                        NodeDesiredValue : 1
+                    }
+                ]
+            },
+			
+			 {
+                
+                Description : "Make WP3 Transfer2",
+                NodesToSendValue : [
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St110JigPresentBit4",
+                        NodeDesiredValue : 1
+                    },
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St110ProcessStatusBit7",
+                        NodeDesiredValue : 0
+                    },
+					 {
+                        NodeId : "Test-Camurdan.Bitmask.St120ProcessStatusBit1",
+                        NodeDesiredValue : 0
+                    },
+                    {
+                        NodeId : "AdvancedTags.WP3_Down",
+                        NodeDesiredValue : 0
+                    },
+                   
+                ]
+            },
+			{
+                
+                Description : "WP3 Transfer2 ",
+                NodesToCheckValue : [
+                    {
+                        NodeId : "AdvancedTags.WP3_Transfer",
+                        NodeDesiredValue : 1
+                    }
+                ]
+            },
+			
+			{
+                
+                Description : "Make WP3 Starved2",
+                NodesToSendValue : [
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St110JigPresentBit4",
+                        NodeDesiredValue : 0
+                    },
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St110ProcessStatusBit7",
+                        NodeDesiredValue : 0
+                    },
+                    {
+                        NodeId : "AdvancedTags.WP3_Down",
+                        NodeDesiredValue : 0
+                    },
+                   
+                ]
+            },
+			{
+                
+                Description : "WP3 Starved2 ",
+                NodesToCheckValue : [
+                    {
+                        NodeId : "AdvancedTags.WP3_Starved",
+                        NodeDesiredValue : 1
+                    }
+                ]
+            },
+			
+			
+        ],
+        ResetNodeValues : [
+
+        ]
+	},
+	ASSEMBLY_WP4 : {
+		Image : "/images/molding.jpeg",
+        Description : "WP4 Assembly TestSteps",
+        TestSteps : [
+            
+            {
+                
+                Description : "Make WP4 Starved",
+                NodesToSendValue : [
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120JigPresentBit2",
+                        NodeDesiredValue : 0
+                    },
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120ProcessStatusBit1",
+                        NodeDesiredValue : 0
+                    },
+                    {
+                        NodeId : "AdvancedTags.WP4_Down",
+                        NodeDesiredValue : 0
+                    },
+                   
+                ]
+            },
+			{
+                
+                Description : "WP4 Starved ",
+                NodesToCheckValue : [
+                    {
+                        NodeId : "AdvancedTags.WP4_Starved",
+                        NodeDesiredValue : 1
+                    }
+                ]
+            },
+		            {
+                
+                Description : "Make WP4 Transfer",
+                NodesToSendValue : [
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120JigPresentBit2",
+                        NodeDesiredValue : 1
+                    },
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120ProcessStatusBit1",
+                        NodeDesiredValue : 0
+                    },
+					{
+                        NodeId : "Test-Camurdan.Bitmask.St120ProcessStatusBit3",
+                        NodeDesiredValue : 0
+                    },
+                    {
+                        NodeId : "AdvancedTags.WP4_Down",
+                        NodeDesiredValue : 0
+                    },
+                   
+                ]
+            },
+			{
+                
+                Description : "WP4 Transfer ",
+                NodesToCheckValue : [
+                    {
+                        NodeId : "AdvancedTags.WP4_Transfer",
+                        NodeDesiredValue : 1
+                    }
+                ]
+            },
+			        {
+                
+                Description : "Make WP4 Cycle",
+                NodesToSendValue : [
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120JigPresentBit2",
+                        NodeDesiredValue : 1
+                    },
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120ProcessStatusBit1",
+                        NodeDesiredValue : 1
+                    },
+                    {
+                        NodeId : "AdvancedTags.WP4_Down",
+                        NodeDesiredValue : 0
+                    },
+                   
+                ]
+            },
+			{
+                
+                Description : "WP4 Cycling ",
+                NodesToCheckValue : [
+                    {
+                        NodeId : "AdvancedTags.WP4_Cycling",
+                        NodeDesiredValue : 1
+                    }
+                ]
+            },
+			        {
+                
+                Description : "Make WP4 Down",
+                NodesToSendValue : [
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120JigPresentBit2",
+                        NodeDesiredValue : 1
+                    },
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120ProcessStatusBit1",
+                        NodeDesiredValue : 0
+                    },
+                    {
+                        NodeId : "ST120.ST120.120_000+S-K010.DataBlocksGlobal.OPC.St120ErrorFlag",
+                        NodeDesiredValue : 1
+                    },
+                   
+                ]
+            },
+			{
+                
+                Description : "WP4 Down ",
+                NodesToCheckValue : [
+                    {
+                        NodeId : "AdvancedTags.WP4_Down",
+                        NodeDesiredValue : 1
+                    }
+                ]
+            },
+			        {
+                
+                Description : "Make WP4 Cycle2",
+                NodesToSendValue : [
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120JigPresentBit2",
+                        NodeDesiredValue : 1
+                    },
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120ProcessStatusBit1",
+                        NodeDesiredValue : 1
+                    },
+                    {
+                        NodeId : "AdvancedTags.WP4_Down",
+                        NodeDesiredValue : 0
+                    },
+                   
+                ]
+            },
+			{
+                
+                Description : "WP4 Cycling2 ",
+                NodesToCheckValue : [
+                    {
+                        NodeId : "AdvancedTags.WP4_Cycling",
+                        NodeDesiredValue : 1
+                    }
+                ]
+            },
+			        {
+                
+                Description : "Make WP4 Block",
+                NodesToSendValue : [
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120JigPresentBit2",
+                        NodeDesiredValue : 1
+                    },
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120ProcessStatusBit1",
+                        NodeDesiredValue : 0
+                    },
+					
+					 {
+                        NodeId : "Test-Camurdan.Bitmask.St120ProcessStatusBit3",
+                        NodeDesiredValue : 1
+                    },
+                    {
+                        NodeId : "AdvancedTags.WP4_Down",
+                        NodeDesiredValue : 0
+                    },
+                   
+                ]
+            },
+			{
+                
+                Description : "WP4 Block ",
+                NodesToCheckValue : [
+                    {
+                        NodeId : "AdvancedTags.WP4_Block",
+                        NodeDesiredValue : 1
+                    }
+                ]
+            },
+			
+			 {
+                
+                Description : "Make WP4 Transfer2",
+                NodesToSendValue : [
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120JigPresentBit2",
+                        NodeDesiredValue : 1
+                    },
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120ProcessStatusBit1",
+                        NodeDesiredValue : 0
+                    },
+					 {
+                        NodeId : "Test-Camurdan.Bitmask.St120ProcessStatusBit3",
+                        NodeDesiredValue : 0
+                    },
+                    {
+                        NodeId : "AdvancedTags.WP4_Down",
+                        NodeDesiredValue : 0
+                    },
+                   
+                ]
+            },
+			{
+                
+                Description : "WP4 Transfer2 ",
+                NodesToCheckValue : [
+                    {
+                        NodeId : "AdvancedTags.WP4_Transfer",
+                        NodeDesiredValue : 1
+                    }
+                ]
+            },
+			
+			{
+                
+                Description : "Make WP4 Starved2",
+                NodesToSendValue : [
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120JigPresentBit2",
+                        NodeDesiredValue : 0
+                    },
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120ProcessStatusBit1",
+                        NodeDesiredValue : 0
+                    },
+                    {
+                        NodeId : "AdvancedTags.WP4_Down",
+                        NodeDesiredValue : 0
+                    },
+                   
+                ]
+            },
+			{
+                
+                Description : "WP4 Starved2 ",
+                NodesToCheckValue : [
+                    {
+                        NodeId : "AdvancedTags.WP4_Starved",
+                        NodeDesiredValue : 1
+                    }
+                ]
+            },
+			
+			
+        ],
+        ResetNodeValues : [
+
+        ]
+	},
+	ASSEMBLY_WP5 : {
+		Image : "/images/molding.jpeg",
+        Description : "WP5 Assembly TestSteps",
+        TestSteps : [
+            
+            {
+                
+                Description : "Make WP5 Starved",
+                NodesToSendValue : [
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120JigPresentBit3",
+                        NodeDesiredValue : 0
+                    },
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120ProcessStatusBit3",
+                        NodeDesiredValue : 0
+                    },
+                    {
+                        NodeId : "AdvancedTags.WP5_Down",
+                        NodeDesiredValue : 0
+                    },
+                   
+                ]
+            },
+			{
+                
+                Description : "WP5 Starved ",
+                NodesToCheckValue : [
+                    {
+                        NodeId : "AdvancedTags.WP5_Starved",
+                        NodeDesiredValue : 1
+                    }
+                ]
+            },
+		            {
+                
+                Description : "Make WP5 Transfer",
+                NodesToSendValue : [
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120JigPresentBit3",
+                        NodeDesiredValue : 1
+                    },
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120ProcessStatusBit3",
+                        NodeDesiredValue : 0
+                    },
+					{
+                        NodeId : "Test-Camurdan.Bitmask.St120ProcessStatusBit5",
+                        NodeDesiredValue : 0
+                    },
+                    {
+                        NodeId : "AdvancedTags.WP5_Down",
+                        NodeDesiredValue : 0
+                    },
+                   
+                ]
+            },
+			{
+                
+                Description : "WP5 Transfer ",
+                NodesToCheckValue : [
+                    {
+                        NodeId : "AdvancedTags.WP5_Transfer",
+                        NodeDesiredValue : 1
+                    }
+                ]
+            },
+			        {
+                
+                Description : "Make WP5 Cycle",
+                NodesToSendValue : [
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120JigPresentBit3",
+                        NodeDesiredValue : 1
+                    },
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120ProcessStatusBit3",
+                        NodeDesiredValue : 1
+                    },
+                    {
+                        NodeId : "AdvancedTags.WP5_Down",
+                        NodeDesiredValue : 0
+                    },
+                   
+                ]
+            },
+			{
+                
+                Description : "WP5 Cycling ",
+                NodesToCheckValue : [
+                    {
+                        NodeId : "AdvancedTags.WP5_Cycling",
+                        NodeDesiredValue : 1
+                    }
+                ]
+            },
+			        {
+                
+                Description : "Make WP5 Down",
+                NodesToSendValue : [
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120JigPresentBit3",
+                        NodeDesiredValue : 1
+                    },
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120ProcessStatusBit3",
+                        NodeDesiredValue : 0
+                    },
+                    {
+                        NodeId : "ST120.ST120.120_000+S-K010.DataBlocksGlobal.OPC.St120ErrorFlag",
+                        NodeDesiredValue : 1
+                    },
+                   
+                ]
+            },
+			{
+                
+                Description : "WP5 Down ",
+                NodesToCheckValue : [
+                    {
+                        NodeId : "AdvancedTags.WP5_Down",
+                        NodeDesiredValue : 1
+                    }
+                ]
+            },
+			        {
+                
+                Description : "Make WP5 Cycle2",
+                NodesToSendValue : [
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120JigPresentBit3",
+                        NodeDesiredValue : 1
+                    },
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120ProcessStatusBit3",
+                        NodeDesiredValue : 1
+                    },
+                    {
+                        NodeId : "AdvancedTags.WP5_Down",
+                        NodeDesiredValue : 0
+                    },
+                   
+                ]
+            },
+			{
+                
+                Description : "WP5 Cycling2 ",
+                NodesToCheckValue : [
+                    {
+                        NodeId : "AdvancedTags.WP5_Cycling",
+                        NodeDesiredValue : 1
+                    }
+                ]
+            },
+			        {
+                
+                Description : "Make WP5 Block",
+                NodesToSendValue : [
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120JigPresentBit3",
+                        NodeDesiredValue : 1
+                    },
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120ProcessStatusBit3",
+                        NodeDesiredValue : 0
+                    },
+					
+					 {
+                        NodeId : "Test-Camurdan.Bitmask.St120ProcessStatusBit5",
+                        NodeDesiredValue : 1
+                    },
+                    {
+                        NodeId : "AdvancedTags.WP5_Down",
+                        NodeDesiredValue : 0
+                    },
+                   
+                ]
+            },
+			{
+                
+                Description : "WP5 Block ",
+                NodesToCheckValue : [
+                    {
+                        NodeId : "AdvancedTags.WP5_Block",
+                        NodeDesiredValue : 1
+                    }
+                ]
+            },
+			
+			 {
+                
+                Description : "Make WP5 Transfer2",
+                NodesToSendValue : [
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120JigPresentBit3",
+                        NodeDesiredValue : 1
+                    },
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120ProcessStatusBit3",
+                        NodeDesiredValue : 0
+                    },
+					 {
+                        NodeId : "Test-Camurdan.Bitmask.St120ProcessStatusBit5",
+                        NodeDesiredValue : 0
+                    },
+                    {
+                        NodeId : "AdvancedTags.WP5_Down",
+                        NodeDesiredValue : 0
+                    },
+                   
+                ]
+            },
+			{
+                
+                Description : "WP5 Transfer2 ",
+                NodesToCheckValue : [
+                    {
+                        NodeId : "AdvancedTags.WP5_Transfer",
+                        NodeDesiredValue : 1
+                    }
+                ]
+            },
+			
+			{
+                
+                Description : "Make WP5 Starved2",
+                NodesToSendValue : [
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120JigPresentBit3",
+                        NodeDesiredValue : 0
+                    },
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120ProcessStatusBit3",
+                        NodeDesiredValue : 0
+                    },
+                    {
+                        NodeId : "AdvancedTags.WP5_Down",
+                        NodeDesiredValue : 0
+                    },
+                   
+                ]
+            },
+			{
+                
+                Description : "WP5 Starved2 ",
+                NodesToCheckValue : [
+                    {
+                        NodeId : "AdvancedTags.WP5_Starved",
+                        NodeDesiredValue : 1
+                    }
+                ]
+            },
+			
+			
+        ],
+        ResetNodeValues : [
+
+        ]
+	},
+	ASSEMBLY_WP6 : {
+		Image : "/images/molding.jpeg",
+        Description : "WP6 Assembly TestSteps",
+        TestSteps : [
+            
+            {
+                
+                Description : "Make WP6 Starved",
+                NodesToSendValue : [
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120JigPresentBit4",
+                        NodeDesiredValue : 0
+                    },
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120ProcessStatusBit5",
+                        NodeDesiredValue : 0
+                    },
+                    {
+                        NodeId : "AdvancedTags.WP6_Down",
+                        NodeDesiredValue : 0
+                    },
+                   
+                ]
+            },
+			{
+                
+                Description : "WP6 Starved ",
+                NodesToCheckValue : [
+                    {
+                        NodeId : "AdvancedTags.WP6_Starved",
+                        NodeDesiredValue : 1
+                    }
+                ]
+            },
+		            {
+                
+                Description : "Make WP6 Transfer",
+                NodesToSendValue : [
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120JigPresentBit4",
+                        NodeDesiredValue : 1
+                    },
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120ProcessStatusBit5",
+                        NodeDesiredValue : 0
+                    },
+					{
+                        NodeId : "Test-Camurdan.Bitmask.St120ProcessStatusBit7",
+                        NodeDesiredValue : 0
+                    },
+                    {
+                        NodeId : "AdvancedTags.WP6_Down",
+                        NodeDesiredValue : 0
+                    },
+                   
+                ]
+            },
+			{
+                
+                Description : "WP6 Transfer ",
+                NodesToCheckValue : [
+                    {
+                        NodeId : "AdvancedTags.WP6_Transfer",
+                        NodeDesiredValue : 1
+                    }
+                ]
+            },
+			        {
+                
+                Description : "Make WP6 Cycle",
+                NodesToSendValue : [
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120JigPresentBit4",
+                        NodeDesiredValue : 1
+                    },
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120ProcessStatusBit5",
+                        NodeDesiredValue : 1
+                    },
+                    {
+                        NodeId : "AdvancedTags.WP6_Down",
+                        NodeDesiredValue : 0
+                    },
+                   
+                ]
+            },
+			{
+                
+                Description : "WP6 Cycling ",
+                NodesToCheckValue : [
+                    {
+                        NodeId : "AdvancedTags.WP6_Cycling",
+                        NodeDesiredValue : 1
+                    }
+                ]
+            },
+			        {
+                
+                Description : "Make WP6 Down",
+                NodesToSendValue : [
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120JigPresentBit4",
+                        NodeDesiredValue : 1
+                    },
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120ProcessStatusBit5",
+                        NodeDesiredValue : 0
+                    },
+                    {
+                        NodeId : "ST120.ST120.120_000+S-K010.DataBlocksGlobal.OPC.St120ErrorFlag",
+                        NodeDesiredValue : 1
+                    },
+                   
+                ]
+            },
+			{
+                
+                Description : "WP6 Down ",
+                NodesToCheckValue : [
+                    {
+                        NodeId : "AdvancedTags.WP6_Down",
+                        NodeDesiredValue : 1
+                    }
+                ]
+            },
+			        {
+                
+                Description : "Make WP6 Cycle2",
+                NodesToSendValue : [
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120JigPresentBit4",
+                        NodeDesiredValue : 1
+                    },
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120ProcessStatusBit5",
+                        NodeDesiredValue : 1
+                    },
+                    {
+                        NodeId : "AdvancedTags.WP6_Down",
+                        NodeDesiredValue : 0
+                    },
+                   
+                ]
+            },
+			{
+                
+                Description : "WP6 Cycling2 ",
+                NodesToCheckValue : [
+                    {
+                        NodeId : "AdvancedTags.WP6_Cycling",
+                        NodeDesiredValue : 1
+                    }
+                ]
+            },
+			        {
+                
+                Description : "Make WP6 Block",
+                NodesToSendValue : [
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120JigPresentBit4",
+                        NodeDesiredValue : 1
+                    },
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120ProcessStatusBit5",
+                        NodeDesiredValue : 0
+                    },
+					
+					 {
+                        NodeId : "Test-Camurdan.Bitmask.St120ProcessStatusBit7",
+                        NodeDesiredValue : 1
+                    },
+                    {
+                        NodeId : "AdvancedTags.WP6_Down",
+                        NodeDesiredValue : 0
+                    },
+                   
+                ]
+            },
+			{
+                
+                Description : "WP6 Block ",
+                NodesToCheckValue : [
+                    {
+                        NodeId : "AdvancedTags.WP6_Block",
+                        NodeDesiredValue : 1
+                    }
+                ]
+            },
+			
+			 {
+                
+                Description : "Make WP6 Transfer2",
+                NodesToSendValue : [
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120JigPresentBit4",
+                        NodeDesiredValue : 1
+                    },
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120ProcessStatusBit5",
+                        NodeDesiredValue : 0
+                    },
+					 {
+                        NodeId : "Test-Camurdan.Bitmask.St120ProcessStatusBit7",
+                        NodeDesiredValue : 0
+                    },
+                    {
+                        NodeId : "AdvancedTags.WP6_Down",
+                        NodeDesiredValue : 0
+                    },
+                   
+                ]
+            },
+			{
+                
+                Description : "WP6 Transfer2 ",
+                NodesToCheckValue : [
+                    {
+                        NodeId : "AdvancedTags.WP6_Transfer",
+                        NodeDesiredValue : 1
+                    }
+                ]
+            },
+			
+			{
+                
+                Description : "Make WP6 Starved2",
+                NodesToSendValue : [
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120JigPresentBit4",
+                        NodeDesiredValue : 0
+                    },
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120ProcessStatusBit5",
+                        NodeDesiredValue : 0
+                    },
+                    {
+                        NodeId : "AdvancedTags.WP6_Down",
+                        NodeDesiredValue : 0
+                    },
+                   
+                ]
+            },
+			{
+                
+                Description : "WP6 Starved2 ",
+                NodesToCheckValue : [
+                    {
+                        NodeId : "AdvancedTags.WP6_Starved",
+                        NodeDesiredValue : 1
+                    }
+                ]
+            },
+			
+			
+        ],
+        ResetNodeValues : [
+
+        ]
+	},
+	ASSEMBLY_WP7 : {
+		Image : "/images/molding.jpeg",
+        Description : "WP7 Assembly TestSteps",
+        TestSteps : [
+            
+            {
+                
+                Description : "Make WP7 Starved",
+                NodesToSendValue : [
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120JigPresentBit5",
+                        NodeDesiredValue : 0
+                    },
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120ProcessStatusBit7",
+                        NodeDesiredValue : 0
+                    },
+                    {
+                        NodeId : "AdvancedTags.WP7_Down",
+                        NodeDesiredValue : 0
+                    },
+                   
+                ]
+            },
+			{
+                
+                Description : "WP7 Starved ",
+                NodesToCheckValue : [
+                    {
+                        NodeId : "AdvancedTags.WP7_Starved",
+                        NodeDesiredValue : 1
+                    }
+                ]
+            },
+		            {
+                
+                Description : "Make WP7 Transfer",
+                NodesToSendValue : [
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120JigPresentBit5",
+                        NodeDesiredValue : 1
+                    },
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120ProcessStatusBit7",
+                        NodeDesiredValue : 0
+                    },
+					{
+                        NodeId : "OMRON_AGV_Tags.AGV_Controller.LD90Jig2Status",
+                        NodeDesiredValue : 5
+                    },
+                    {
+                        NodeId : "AdvancedTags.WP7_Down",
+                        NodeDesiredValue : 0
+                    },
+                   
+                ]
+            },
+			{
+                
+                Description : "WP7 Transfer ",
+                NodesToCheckValue : [
+                    {
+                        NodeId : "AdvancedTags.WP7_Transfer",
+                        NodeDesiredValue : 1
+                    }
+                ]
+            },
+			        {
+                
+                Description : "Make WP7 Cycle",
+                NodesToSendValue : [
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120JigPresentBit5",
+                        NodeDesiredValue : 1
+                    },
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120ProcessStatusBit7",
+                        NodeDesiredValue : 1
+                    },
+                    {
+                        NodeId : "AdvancedTags.WP7_Down",
+                        NodeDesiredValue : 0
+                    },
+                   
+                ]
+            },
+			{
+                
+                Description : "WP7 Cycling ",
+                NodesToCheckValue : [
+                    {
+                        NodeId : "AdvancedTags.WP7_Cycling",
+                        NodeDesiredValue : 1
+                    }
+                ]
+            },
+			        {
+                
+                Description : "Make WP7 Down",
+                NodesToSendValue : [
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120JigPresentBit5",
+                        NodeDesiredValue : 1
+                    },
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120ProcessStatusBit7",
+                        NodeDesiredValue : 0
+                    },
+                    {
+                        NodeId : "ST120.ST120.120_000+S-K010.DataBlocksGlobal.OPC.St120ErrorFlag",
+                        NodeDesiredValue : 1
+                    },
+                   
+                ]
+            },
+			{
+                
+                Description : "WP7 Down ",
+                NodesToCheckValue : [
+                    {
+                        NodeId : "AdvancedTags.WP7_Down",
+                        NodeDesiredValue : 1
+                    }
+                ]
+            },
+			        {
+                
+                Description : "Make WP7 Cycle2",
+                NodesToSendValue : [
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120JigPresentBit5",
+                        NodeDesiredValue : 1
+                    },
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120ProcessStatusBit7",
+                        NodeDesiredValue : 1
+                    },
+                    {
+                        NodeId : "AdvancedTags.WP7_Down",
+                        NodeDesiredValue : 0
+                    },
+                   
+                ]
+            },
+			{
+                
+                Description : "WP7 Cycling2 ",
+                NodesToCheckValue : [
+                    {
+                        NodeId : "AdvancedTags.WP7_Cycling",
+                        NodeDesiredValue : 1
+                    }
+                ]
+            },
+			        {
+                
+                Description : "Make WP7 Block",
+                NodesToSendValue : [
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120JigPresentBit5",
+                        NodeDesiredValue : 1
+                    },
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120ProcessStatusBit7",
+                        NodeDesiredValue : 0
+                    },
+					
+					 {
+                        NodeId : "OMRON_AGV_Tags.AGV_Controller.LD90Jig2Status",
+                        NodeDesiredValue : 6
+                    },
+                    {
+                        NodeId : "AdvancedTags.WP7_Down",
+                        NodeDesiredValue : 0
+                    },
+                   
+                ]
+            },
+			{
+                
+                Description : "WP7 Block ",
+                NodesToCheckValue : [
+                    {
+                        NodeId : "AdvancedTags.WP7_Block",
+                        NodeDesiredValue : 1
+                    }
+                ]
+            },
+			
+			 {
+                
+                Description : "Make WP7 Transfer2",
+                NodesToSendValue : [
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120JigPresentBit5",
+                        NodeDesiredValue : 1
+                    },
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120ProcessStatusBit7",
+                        NodeDesiredValue : 0
+                    },
+					 {
+                        NodeId : "OMRON_AGV_Tags.AGV_Controller.LD90Jig2Status",
+                        NodeDesiredValue : 5
+                    },
+                    {
+                        NodeId : "AdvancedTags.WP7_Down",
+                        NodeDesiredValue : 0
+                    },
+                   
+                ]
+            },
+			{
+                
+                Description : "WP7 Transfer2 ",
+                NodesToCheckValue : [
+                    {
+                        NodeId : "AdvancedTags.WP7_Transfer",
+                        NodeDesiredValue : 1
+                    }
+                ]
+            },
+			
+			{
+                
+                Description : "Make WP7 Starved2",
+                NodesToSendValue : [
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120JigPresentBit5",
+                        NodeDesiredValue : 0
+                    },
+                    {
+                        NodeId : "Test-Camurdan.Bitmask.St120ProcessStatusBit7",
+                        NodeDesiredValue : 0
+                    },
+                    {
+                        NodeId : "AdvancedTags.WP7_Down",
+                        NodeDesiredValue : 0
+                    },
+                   
+                ]
+            },
+			{
+                
+                Description : "WP7 Starved2 ",
+                NodesToCheckValue : [
+                    {
+                        NodeId : "AdvancedTags.WP7_Starved",
+                        NodeDesiredValue : 1
+                    }
+                ]
+            },
+			
+			
+        ],
+        ResetNodeValues : [
+
+        ]
+	},
+	
 }
